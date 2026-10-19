@@ -212,3 +212,4 @@
 .reveal .slides section table.design td span { color: var(--muted); }
 .reveal .slides section table.design col, .reveal .slides section table.design th:nth-child(2) { width: 38%; }
 .reveal .slides section table.design td:first-child span.sep { font-weight: 400; color: var(--muted); opacity: 0.6; line-height: 1; }
+.qr-caption .nw { white-space: nowrap; }
