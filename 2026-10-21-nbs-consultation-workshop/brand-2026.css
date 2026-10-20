@@ -185,6 +185,7 @@
 .qcards.four .qcard .q { font-size: 54pt; padding: 40px 36px 0; }
 .qcards.four .qcard .sub { font-size: 28pt; padding: 24px 36px 48px; }
 .qcards.four .qcard .band { height: 110px; padding: 0 36px; }
+.reveal .slides section p.after-cards { margin-top: 36px; }
 .qcard.maybe .band { background: #164a87; color: #fff; }
 .people-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; margin: 32px 0 56px; }
 .people-row .person { background: var(--surface); box-shadow: 0 0 0 3px var(--rule); border-left: 14px solid var(--block, #ffa500); border-radius: 18px; padding: 40px 32px 48px; }
