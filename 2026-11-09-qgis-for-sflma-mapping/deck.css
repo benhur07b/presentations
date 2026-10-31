@@ -1,0 +1,47 @@
+/* QGIS for SFLMA and Forestry Tenure Mapping: the deck's own meanings and layouts, on top of the 2026 map-sheet style. */
+
+/* The check-in's traffic light, in the colours the quiz page shows (quizzes/site/css/site.css) */
+:root {
+  --light-green: #1f8a4c;
+  --light-yellow: #e0b400;
+  --light-red: #c0392b;
+}
+.dot.light-green { --dot: var(--light-green); }
+.dot.light-yellow { --dot: var(--light-yellow); }
+.dot.light-red { --dot: var(--light-red); }
+
+/* A quiz slide: the quiz and the folder its file goes in, side by side */
+.qr-pair { display: flex; justify-content: center; gap: 160px; margin-top: 8px; }
+.qr-pair .qr-col { width: 520px; }
+.reveal .slides section .qr-pair img.qr { width: 330px; height: 330px; }
+.reveal .slides section .qr-pair p.qr-caption { color: var(--navy); }
+.reveal .slides section .qr-pair p.qr-caption b { display: block; font-family: var(--font-title); font-weight: 800; font-size: 26pt; letter-spacing: -0.015em; text-transform: none; margin-bottom: 6px; }
+
+/* A check-in's traffic light on one line, above its two codes */
+.reveal .slides section .lights { display: flex; justify-content: center; gap: 56px; font-size: 24pt; margin: 0 0 24px; }
+.reveal .slides section .lights > span { display: inline-flex; align-items: center; gap: 14px; }
+
+/* The workbook slide: what is where beside its code */
+.reveal .slides section .split.qr-split .rows > div { font-size: 26pt; }
+.reveal .slides section .split.qr-split img.qr { width: 390px; height: 390px; }
+
+/* The course's finished map beside what it shows: the A3 sheet's height sets the picture's width, so it stays above the footer */
+.split.map-shot { grid-template-columns: 1fr 740px; gap: 64px; }
+
+/* A highlighted word on a navy slide stays whole: "open-source" never breaks at its hyphen */
+.reveal .slides section.section-slide h1 em { white-space: nowrap; }
+
+/* About me: the avatar, a terminal card or the portfolio, and the page's code, in one row */
+.about { display: flex; align-items: flex-start; gap: 56px; margin-top: 8px; }
+.reveal .slides section .about img.avatar { width: 160px; height: 160px; margin: 0; flex: none; }
+.reveal .slides section .about img.portfolio { flex: 1; min-width: 0; max-height: 560px; object-fit: contain; object-position: left top; margin: 0; }
+.reveal .slides section .about img.qr { width: 296px; height: 296px; padding: 12px; }
+.about .qr-col { flex: none; }
+.terminal { flex: 1; background: var(--surface); border-radius: 14px; box-shadow: 0 0 0 3px var(--navy); overflow: hidden; }
+.terminal .bar { display: flex; gap: 12px; padding: 16px 24px; border-bottom: 3px solid var(--navy); }
+.terminal .bar i { width: 20px; height: 20px; border-radius: 50%; box-shadow: inset 0 0 0 3px var(--navy); }
+.terminal .screen { font-family: var(--font-mono); font-size: 22pt; line-height: 1.5; padding: 24px 32px; color: var(--navy); }
+.terminal .prompt { font-weight: 700; }
+
+/* A row's label keeps to one line; its text wraps beside it */
+.reveal .slides section .rows > div > b { flex: none; }
