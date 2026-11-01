@@ -16,7 +16,8 @@ trainer). It reads three answers, never another repository's files:
   a file or an address: a delivery built but not yet published is read from `quizzes/dist/cohorts.json` after the
   quizzes' `build --cohort ID`. It says which quiz runs on which day, its kind, title and rounds.
 
-It writes `<first day>-<quiz set>/` (or --folder): `index.md` with the title slide's fields, the contents, a slide with
+It writes `<first day>-<quiz set>/` (or --folder): `index.md` with the title slide's fields (in `style: 2026/map-sheet`,
+the training decks' style, with the default place: give it the training's own with `place`, the slides skill's list), the contents, a slide with
 each course's workbook and its code, then each day: its section, its agenda (a table per half day, from the trainer's
 schedule), and a slide per quiz round, the pre-test first and the post-test last, each with its timer and QR code, and
 the shared folder's code when the trainer's file gives one; `deck.css`; `img/qr/*.svg`; and a `.gitignore` that keeps
@@ -263,7 +264,7 @@ def halves(rows: list[list[str]]) -> list[tuple[str, list[list[str]]]]:
     return slides
 
 
-DECK_CSS = """/* {title}: the deck's own meanings and layouts, on top of the 2026 style. Started by new-deck; the presenter's from here. */
+DECK_CSS = """/* {title}: the deck's own meanings and layouts, on top of the 2026 map-sheet style. Started by new-deck; the presenter's from here. */
 
 /* The check-in's traffic light, in the colours the quiz page shows (quizzes/site/css/site.css) */
 :root {{
@@ -374,7 +375,7 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
     named = dates_text(days)
     courses = training["courses"]
     title = training["title"]
-    front = ["---", "style: 2026", f"title: {yaml_text(html.escape(title, quote=False))}",
+    front = ["---", "style: 2026/map-sheet", f"title: {yaml_text(html.escape(title, quote=False))}",
              f"subtitle: {yaml_text('<br>'.join(html.escape(x, quote=False) for x in (' + '.join(c['name'] for c in courses), named, who(training))))}",
              f"project: {yaml_text(courses[0]['site']['name'])}",
              f"page_title: {yaml_text(f'{title}, {named}')}",
