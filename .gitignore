@@ -1,4 +1,6 @@
 # The scripts' environment and caches
 scripts/.venv/
+# offline_deck.py's tarballs, fetched from the npm registry and checked against their pins
+scripts/.cache/
 __pycache__/
 .pytest_cache/
