@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" font-family="Atkinson Hyperlegible Next, Arial, sans-serif">
+  <rect width="640" height="640" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0c2340"/>
+    </marker>
+  </defs>
+  <!-- quadrant shading -->
+  <rect x="320" y="60" width="260" height="260" fill="#EBF6FF"/>
+  <rect x="320" y="320" width="260" height="260" fill="#fff4e0"/>
+  <rect x="60" y="320" width="260" height="260" fill="#EBF6FF"/>
+  <rect x="60" y="60" width="260" height="260" fill="#fff4e0"/>
+  <!-- axes -->
+  <line x1="320" y1="40" x2="320" y2="600" stroke="#0c2340" stroke-width="2"/>
+  <line x1="40" y1="320" x2="600" y2="320" stroke="#0c2340" stroke-width="2"/>
+  <text x="320" y="30" text-anchor="middle" font-size="26" font-weight="700" fill="#0c2340">N</text>
+  <text x="320" y="628" text-anchor="middle" font-size="26" font-weight="700" fill="#0c2340">S</text>
+  <text x="620" y="329" text-anchor="middle" font-size="26" font-weight="700" fill="#0c2340">E</text>
+  <text x="20" y="329" text-anchor="middle" font-size="26" font-weight="700" fill="#0c2340">W</text>
+  <!-- example lines: azimuth 35, 125, 215, 300 ; length 210 -->
+  <line x1="320" y1="320" x2="440.4" y2="148.0" stroke="#3791e0" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="320" y1="320" x2="492.0" y2="440.4" stroke="#3791e0" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="320" y1="320" x2="199.6" y2="492.0" stroke="#3791e0" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="320" y1="320" x2="138.1" y2="215.0" stroke="#3791e0" stroke-width="4" marker-end="url(#arrow)"/>
+  <!-- azimuth arc for the first example (clockwise from north) -->
+  <path d="M320,250 A70,70 0 0 1 360.2,262.7" fill="none" stroke="#ffa500" stroke-width="3"/>
+  <!-- labels -->
+  <g font-size="18" fill="#0c2340">
+    <text x="430" y="110" font-weight="700">Azimuth 35°</text>
+    <text x="430" y="134">Bearing N 35° E</text>
+    <text x="430" y="482" font-weight="700">Azimuth 125°</text>
+    <text x="430" y="506">Bearing S 55° E</text>
+    <text x="78" y="540" font-weight="700">Azimuth 215°</text>
+    <text x="78" y="564">Bearing S 35° W</text>
+    <text x="78" y="160" font-weight="700">Azimuth 300°</text>
+    <text x="78" y="184">Bearing N 60° W</text>
+  </g>
+  <g font-size="15" fill="#555555">
+    <text x="570" y="82" text-anchor="end">0° to 90°</text>
+    <text x="570" y="566" text-anchor="end">90° to 180°</text>
+    <text x="70" y="82">270° to 360°</text>
+  </g>
+  <text x="70" y="600" font-size="15" fill="#555555">180° to 270°</text>
+</svg>
