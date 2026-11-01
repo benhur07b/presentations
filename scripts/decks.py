@@ -9,7 +9,9 @@ trainer). It reads three answers, never another repository's files:
 
 - the hub's `scripts/training.py ID --json`, run in the hub beside this repository: the training's title, days, client
   (named only when the record names it: a redacted client's name reaches no page), its courses with their workbooks'
-  addresses, and its agenda from its trainer's delivery file, when its course has a trainer;
+  addresses and their trainers, and its agenda, as its trainer answers it from its delivery file. Every course taught
+  in a training has a trainer, which keeps its agenda: a training of a course that names none, or whose trainer has no
+  file for it yet, gets no deck (a deck without its agenda);
 - the quizzes site's listing, `cohorts.json` at the hub's quizzes address (the one the link check reads), or --listing,
   a file or an address: a delivery built but not yet published is read from `quizzes/dist/cohorts.json` after the
   quizzes' `build --cohort ID`. It says which quiz runs on which day, its kind, title and rounds.
@@ -36,8 +38,8 @@ Assumptions: the hub sits beside this repository (`../learn-factory`, as in the 
 --hub; its own command needs Node (`nvm use 24`) and `npm run generate` done there.
 
 Exit codes: 0 done (or planned, or there already); 2 usage; 5 the folder or the card is another deck's; 65 the hub, the
-listing or the agenda disagree on the training's days, or a value can't be shown; 66 no such training, or no delivery of
-it in the listing, or no card for it; 78 the hub is not where expected, or answers otherwise than its --json says.
+listing or the agenda disagree on the training's days, a course has no trainer, or a value can't be shown; 66 no such
+training, no delivery of it in the listing, no delivery file of it in its trainer (no agenda yet), or no card for it; 78 the hub is not where expected, or answers otherwise than its --json says.
 """
 
 from __future__ import annotations
@@ -338,6 +340,10 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
     agenda = training["agenda"]
     if agenda and [d["date"] for d in agenda["days"]] != training["days"]:
         raise Stop(DATA, f"{agenda['trainer']}'s {agenda['file']} runs on other days than the record")
+    if no_trainer := [c["id"] for c in training["courses"] if not c.get("trainer")]:
+        raise Stop(DATA, f"{', '.join(no_trainer)} {'names' if len(no_trainer) == 1 else 'name'} no trainer in the hub: a course taught in a "
+                         "training has one, which keeps the training's agenda. Give it its trainer (its definition's `trainer`, then the "
+                         "trainer's newCourse) and the training its delivery file (the hub's scripts/new_delivery.py), then start the deck")
 
     given = folder
     folder = folder or f"{days[0].isoformat()}-{cohort['courseId']}"
@@ -358,9 +364,12 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
     if owner := next((t for t, f in cards.items() if f == folder), None):
         raise Stop(CONFLICT, f"index.html's card for {owner} names {folder}/ already: choose another folder with --folder")
 
+    if agenda is None:
+        raise Stop(NO_INPUT, f"{training_id}'s trainer has no delivery file for it yet, so it has no agenda for the deck: make it with the hub's "
+                             "scripts/new_delivery.py, then start the deck")
     deck = Deck(training, folder, False)
     base = training["quizzes"]
-    outputs = agenda["outputs_url"] if agenda else None
+    outputs = agenda["outputs_url"]
     files: dict[str, bytes] = {}
     named = dates_text(days)
     courses = training["courses"]
@@ -373,7 +382,7 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
              f"  description: {yaml_text(f'The room deck of {title} ({named}): each day’s plan, and the codes for every test and check-in.')}",
              "---", "", '<link rel="stylesheet" href="deck.css">', ""]
     slides = []
-    day_titles = [(agenda["days"][i]["title"] if agenda else None) for i in range(len(days))]
+    day_titles = [agenda["days"][i]["title"] for i in range(len(days))]
     workbooks = [c for c in courses if c["workbook"]]
     toc = [*([f"<li>The workbook{'s' if len(workbooks) > 1 else ''}</li>"] if workbooks else []),
            *(f"<li>Day {n} · {html.escape(t)}</li>" if t else f"<li>Day {n}</li>" for n, t in enumerate(day_titles, start=1))]
@@ -397,7 +406,7 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
         day_title = day_titles[n - 1]
         slides.append("\n".join(['<!-- .slide: class="section-slide" -->', f'<span class="section-label">{day:%A} {day.day} {day:%B}</span>', "",
                                  f"# Day {n}. {html.escape(day_title)}" if day_title else f"# Day {n}."]))
-        for half, rows in halves(agenda["days"][n - 1]["schedule"]) if agenda else []:
+        for half, rows in halves(agenda["days"][n - 1]["schedule"]):
             table = ["| Time | What |", "|:--|:--|", *(f"| {cell(r[0])} | {cell(r[1])} |" for r in rows)]
             slides.append("\n".join([f"## Day {n}, the {half}.", "", *table]))
         quizzes = day_quizzes(n, listed, cohort, base)
@@ -410,8 +419,6 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
     files["deck.css"] = DECK_CSS.format(title=title).encode()
     files[".gitignore"] = b"index.md\n"
     deck.files = files
-    if not agenda:
-        deck.notes.append("no agenda: no trainer of its courses has a delivery file for it, so its days have no agenda slides")
     if not outputs:
         deck.notes.append("no shared folder: its trainer's file gives no outputs_url, so its quiz slides have no folder code")
     when = f"{named} · {' + '.join(c['name'] for c in courses)}, {who(training)}"

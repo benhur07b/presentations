@@ -167,12 +167,23 @@ def test_the_agenda_is_a_table_per_half_day_never_longer_than_a_slide_holds(repo
     assert "# Day 2.\n" in md  # a day the trainer's file gives no title, and no schedule: its section, and no table
 
 
-def test_a_training_whose_course_has_no_trainer_gets_its_quizzes_and_no_agenda(repo: Path) -> None:
-    deck = plan(repo, Hub(answer(agenda=None, trainers=[])))
+def test_a_training_whose_course_has_no_trainer_or_no_agenda_yet_gets_no_deck(repo: Path) -> None:
+    """Every course taught in a training has a trainer, which keeps its agenda (WO-10, the owner): a deck is never started
+    without it, and nothing is planned."""
+    course = answer()["courses"][0]
+    with pytest.raises(decks.Stop, match="python-essentials names no trainer in the hub") as stop:
+        plan(repo, Hub(answer(agenda=None, trainers=[], courses=[{**course, "trainer": None}])))
+    assert stop.value.code == decks.DATA
+    with pytest.raises(decks.Stop, match="acme-2027-02's trainer has no delivery file for it yet") as stop:
+        plan(repo, Hub(answer(agenda=None, trainers=[{"id": "python", "repo": "/x/learn-python-trainer", "delivery": None}])))
+    assert stop.value.code == decks.NO_INPUT
+
+
+def test_a_trainer_s_file_without_an_outputs_link_gives_quiz_slides_without_the_folder_s_code(repo: Path) -> None:
+    deck = plan(repo, Hub(answer(agenda={**answer()["agenda"], "outputs_url": None})))
     md = deck.files["index.md"].decode()
-    assert "| Time | What |" not in md and "outputs-folder" not in md and "img/qr/outputs-folder.svg" not in deck.files
-    assert len(deck.quizzes) == 6
-    assert any("no agenda" in n for n in deck.notes) and any("no shared folder" in n for n in deck.notes)
+    assert "outputs-folder" not in md and "img/qr/outputs-folder.svg" not in deck.files and len(deck.quizzes) == 6
+    assert any("no shared folder" in n for n in deck.notes)
 
 
 def test_a_redacted_clients_name_is_on_no_page(repo: Path) -> None:
