@@ -7,7 +7,8 @@
 
 For each deck (a folder with HTML pages, the slides of a reveal.js deck included) and the index page:
 
-- every link, image, stylesheet and script: a file in this repository, or an address on the web that opens
+- every link, image, stylesheet and script: a file in this repository (an address on bnhr.xyz/presentations/ too, since
+  this repository is what is published there), or an address on the web that opens
 - every QR code: it decodes, its address opens, and the address typed under it (the caption) is the one it opens
 - every link to a quiz on bnhr.xyz/quizzes: a delivery on the quizzes site runs that quiz and round, so the page does not
   say "This quiz isn't open"; a quiz that several deliveries run, linked without ?delivery=, is noted, since the page
@@ -163,7 +164,9 @@ def collect(pages: list[Path], pdfs: list[Path]) -> list[Link]:
             if value.startswith(SKIPPED):
                 continue
             url = urllib.parse.urljoin(base, value)
-            links.append(Link(file, line, "link", url, local=not urllib.parse.urlparse(value).scheme and url.startswith(SITE)))
+            # An address on this site is a file of this repository, which is what the site publishes: a deck's own address
+            # (its share link) is checked by its file, so a deck holds before it is published
+            links.append(Link(file, line, "link", url, local=url.startswith(SITE)))
         for qr in page.qrs:
             image = (path.parent / (qr["src"] or "")).resolve()
             link = Link(file, qr["line"], "QR code", None, caption=caption_address(qr["caption"]))

@@ -1,0 +1,17 @@
+[project]
+name = "presentations-scripts"
+version = "2026.11.0"
+description = "The presentations' commands (decks.py) and their tests, in their own environment."
+requires-python = ">=3.12"
+dependencies = [
+    # the QR codes, drawn as the trainers draw theirs
+    "segno==1.6.6",
+    "pytest>=8.3",
+    # the tests read each QR code back as the link check does (scripts/check_links.py, which keeps its own packages)
+    "cairosvg>=2.9",
+    "pillow>=13",
+    "zxing-cpp>=3.1",
+]
+
+[tool.uv]
+package = false
