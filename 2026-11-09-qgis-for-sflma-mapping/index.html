@@ -6,11 +6,11 @@
   <title>Four outputs, one application: QGIS for SFLMA and Forestry Tenure Mapping</title>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://bnhr.xyz/presentations/2026-11-09-qgis-for-sflma-mapping/">
-  <meta name="description" content="The room deck of QGIS for SFLMA and Forestry Tenure Mapping (Natural Resources Development Corporation, 9–11 November 2026): how the course works, the four outputs every application needs, each day&#x27;s plan, and the codes for every test and check-in.">
+  <meta name="description" content="The room deck of QGIS for SFLMA and Forestry Tenure Mapping (Natural Resources Development Corporation, 9–11 November 2026): how the course works, the four outputs every application needs, each day&#x27;s plan and the ideas behind each block, what each exercise should give you, and the codes for every test and check-in.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BNHR">
   <meta property="og:title" content="Four outputs, one application: QGIS for SFLMA and Forestry Tenure Mapping">
-  <meta property="og:description" content="The room deck of QGIS for SFLMA and Forestry Tenure Mapping (Natural Resources Development Corporation, 9–11 November 2026): how the course works, the four outputs every application needs, each day&#x27;s plan, and the codes for every test and check-in.">
+  <meta property="og:description" content="The room deck of QGIS for SFLMA and Forestry Tenure Mapping (Natural Resources Development Corporation, 9–11 November 2026): how the course works, the four outputs every application needs, each day&#x27;s plan and the ideas behind each block, what each exercise should give you, and the codes for every test and check-in.">
   <meta property="og:url" content="https://bnhr.xyz/presentations/2026-11-09-qgis-for-sflma-mapping/">
   <meta property="og:image" content="https://bnhr.xyz/presentations/2026-11-09-qgis-for-sflma-mapping/img/share.png">
   <meta property="og:image:width" content="1200">
@@ -1362,6 +1362,22 @@ Some of the work: maps made from open data with free software, and some of the r
 
 ---
 
+## I also post maps made from *open* data.
+
+<div class="posts">
+<figure><img src="img/about/post-ridgelines.jpg" alt="Known Pleasures: Mt Apo. Eighty ridgelines across the Philippines' highest peak, each the height of the land"><figcaption>Ridgelines of Mt Apo</figcaption></figure>
+<figure><img src="img/about/post-watershed.jpg" alt="A watershed in seconds: the 528 square kilometre Marikina watershed traced from one point on the river"><figcaption>The Marikina watershed</figcaption></figure>
+<figure><img src="img/about/post-tree-loss.jpg" alt="From the 2000 tree cover, 1.58 million hectares lost: the Philippines' forest loss, every year from 2001 to 2025"><figcaption>Forest cover lost</figcaption></figure>
+<figure><img src="img/about/post-antipodes.jpg" alt="Dig through the centre of the Earth: the Philippines flipped to the other side of the planet, landing in Brazil"><figcaption>The antipodes</figcaption></figure>
+</div>
+
+<p class="steps-note">Elevation, rivers, forest cover, boundaries: free data, free software, and the code to make them yourself.</p>
+
+Note:
+A few of the maps I post on the page. The ridgelines of Mt Apo, from a free elevation model. The Marikina watershed, traced from one point on the river in three seconds. The tree cover the Philippines lost from 2001 to 2025, from Global Forest Change, closest to your work. And where you would come out if you dug straight through the Earth from Manila: Brazil. Every one is open data and free software; the same elevation, forest and boundary data you can load in QGIS.
+
+---
+
 <!-- .slide: class="toc-slide" -->
 
 ## Contents
@@ -1592,6 +1608,105 @@ Note:
 
 ---
 
+## The guide fixes every file's *name*.
+
+| Files | Name |
+|:--|:--|
+| Shapefiles | `<Region>_<Tenure Type>_<Point or Polygon>_<Applicant's Name>` |
+| TD and coordinates | `TD_<Region>_<Tenure Type>_<Applicant's Name>` |
+
+<p class="steps-note">The sample: <code>IV-A_SFLMA_Polygon_Bagong Gubat Agroforestry Cooperative.shp</code></p>
+
+Note:
+(10:10, Module 1.) Before any map, the names. The guide prescribes two patterns: the shapefiles carry region, tenure type, point or polygon, and the applicant's name in full; the technical description and the coordinates start with TD. For the sample that gives four files: the point and polygon shapefiles, and the TD as a spreadsheet and as CSV. A wrong name is one of the easiest reasons to return an application, and one of the easiest to avoid. Several parcels: each parcel's TD on its own sheet, one point shapefile per parcel, and one polygon shapefile for all of them.
+
+---
+
+## Submit shapefiles; work in a *GeoPackage*.
+
+<div class="two-column">
+<div class="column">
+<div class="column-header">Shapefile · what you submit</div>
+<div class="facts">
+<p>Field names cut to 10 characters: <code>TIE_DISTANCE</code> becomes <code>TIE_DISTAN</code></p>
+<p>Text fields hold 254 characters, not the guide's 255</p>
+<p>Several files: lose the <code>.prj</code> and the layer has no CRS</p>
+</div>
+</div>
+<div class="column focus">
+<div class="column-header">GeoPackage · where you work</div>
+<div class="facts">
+<p>One file, many layers: the TD lines, the tie point, the reference layers</p>
+<p>Long field names, long text</p>
+<p>It holds the QGIS project too, so data and project travel together</p>
+</div>
+</div>
+</div>
+
+Note:
+The guide requires shapefiles, and we submit shapefiles. But the format's limits show up in this very workflow: the tie line's field names get cut at ten characters, a text field of 255 silently becomes 254, and a shapefile is five files, so one missing .prj and it opens with no coordinate system. So each application's working data lives in a GeoPackage, and only the two submission layers are shapefiles, made with the prescribed fields from the start.
+
+---
+
+## Two datums, five zones: the TD *decides*.
+
+<div class="compact">
+
+| Zone | Central meridian | Luzon 1911 | PRS 1992 |
+|:--|:--|:--|:--|
+| I | 117° E | EPSG:25391 | EPSG:3121 |
+| II | 119° E | EPSG:25392 | EPSG:3122 |
+| III | 121° E | EPSG:25393 | **EPSG:3123** |
+| IV | 123° E | EPSG:25394 | EPSG:3124 |
+| V | 125° E | EPSG:25395 | EPSG:3125 |
+
+</div>
+
+<p class="steps-note">The national grid is not UTM: EPSG:32651 looks alike, and isn't.</p>
+
+Note:
+Luzon 1911 and PRS 1992 are two datums; the same point on the ground has different coordinates in each. Both use the national grid's five zones, two degrees wide, so each zone has two CRSs in QGIS. Which one you use is not a preference: the technical description and its tie point decide it. Our sample says PRS 1992 Philippines Zone III, EPSG:3123. If a TD doesn't say its zone, take the zone whose central meridian is nearest the area. And UTM 51N coordinates look similar in size, but they are a different projection: not interchangeable. Leave this slide up during Exercise 1.1.
+
+---
+
+## Another datum moves the area *7.7 m*.
+
+<div class="split">
+<div class="rows stack">
+<div><b>Default transformation</b>7.7 m off at corner 1</div>
+<div><b>Another one</b>22.6 m off</div>
+<div><b>The fix</b>the tie point in the TD's datum, never a reprojection</div>
+</div>
+<div class="shot-col">
+<div class="screenshot-container"><img src="img/course/datum-offset.png" alt="The sample's corners read as PRS 1992 Zone III in red and as Luzon 1911 Zone III in blue, 7.7 metres apart at corner 1"></div>
+<p class="slide-source">The sample's corner 1, read as PRS 1992 (red) and as Luzon 1911 (blue)</p>
+</div>
+</div>
+
+Note:
+QGIS can reproject between Luzon 1911 and PRS 1992, but the result is not survey-grade, and it depends on which transformation QGIS picks. The sample's corners, read as the other datum, land 7.7 metres away with the default transformation, 22.6 with another. A boundary 7.7 metres off overlaps its neighbour's. So the rule: keep the shapefiles, the TD and the tie point in the TD's datum and zone, and if something doesn't match, get the tie point's coordinates in the right datum instead of reprojecting the area.
+
+---
+
+## Your turn: Exercise *1.1*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>1.1</b>The project in the TD's datum and zone</div>
+<div><b>Then</b>Load the reference layers and the tie point, and check each one's CRS</div>
+<div><b>Save</b>The project inside the GeoPackage</div>
+</div>
+<div class="callout done"><b>Done when</b> the status bar and every layer read EPSG:3123.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-01.svg" alt="QR code for Module 1 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">01-laying-the-foundation/</span></p></div>
+</div>
+
+Note:
+Exercise 1.1, in the workbook's Module 1. The sample TD says PRS 1992 Philippines Zone III: filter the Project Properties for "Philippines zone" and pick PRS92 / Philippines zone 3. Load the barangays, municipalities, provinces and the tie point, check each one's CRS, then save the project into the GeoPackage. If you finish early, read "Beyond files" in the module: what changes when an office handles hundreds of applications.
+
+---
+
 ## Morning check-in: the guide and the *CRS*.
 
 <bnhr-timer minutes="3" extra="1"></bnhr-timer>
@@ -1608,6 +1723,57 @@ Note:
 
 ---
 
+## The guide's field types, in *QGIS's* words.
+
+| The guide (ArcGIS) | QGIS type | Length | Precision |
+|:--|:--|:--|:--|
+| Short Integer | Integer (32 bit) | 4 | |
+| Double | Decimal (double) | 20 | 3 |
+| Text, length 255 | Text (string) | **254** | |
+| Text, length 50 | Text (string) | 50 | |
+
+<p class="steps-note">X and Y stay blank. The coordinates go in NORTHINGS and EASTINGS, with 3 decimals.</p>
+
+Note:
+(13:00, Module 2.) The guide lists the fields of both shapefiles in ArcGIS's names; in QGIS's New Shapefile Layer dialog they are these. Two traps. Type 255 for a text field and QGIS quietly makes it 254, the most a shapefile holds. And the coordinates take precision 3, the guide's own millimetres; left at the default, a northing exports to CSV as 1629584.142999999923632. X and Y are in the prescribed table, but the guide says to leave them blank.
+
+---
+
+## Three ways to plot, *one* polygon.
+
+<div class="steps" style="--n: 3">
+<div class="step"><div class="n">2.2 · a TD</div><div class="name">Bearings and distances</div><div class="what">The Azimuth and Distance plugin, from the tie point to corner 1, then around.</div></div>
+<div class="step"><div class="n">2.3 · a corner list</div><div class="name">Northings and eastings</div><div class="what">The CSV as points, the points as a path, the path as a polygon.</div></div>
+<div class="step"><div class="n">2.4 · a layer</div><div class="name">An existing area</div><div class="what">Digitized or edited against the reference layers, with snapping on.</div></div>
+</div>
+
+<p class="steps-note">What the applicant gives you picks the method. Each ends in a closed polygon in the TD's CRS.</p>
+
+Note:
+How you plot depends on what the applicant hands you. A technical description: the Azimuth and Distance plugin walks the tie line from the BLLM to corner 1, then each line around the boundary. A list of corner coordinates: the CSV as points, the points joined in order into a path, the path closed into a polygon. An existing layer, a survey or an older application: digitize or clean it against the reference layers, with snapping on so the vertices land exactly. All three land in the same place, and the rest of the course doesn't care which you used.
+
+---
+
+## Your turn: Exercises *2.1 to 2.4*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>2.1</b>The two shapefiles, named and with the prescribed fields</div>
+<div><b>2.2</b>The area from the TD, with the plugin</div>
+<div><b>2.3</b>The area from the corners' CSV</div>
+<div><b>2.4</b>The area from an existing layer</div>
+</div>
+<div class="callout done"><b>Done when</b> the polygon has nine corners, and corner 1 sits 1,283.45 m from BLLM No. 1.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-02.svg" alt="QR code for Module 2 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">02-preparing-the-area-data/</span></p></div>
+</div>
+
+Note:
+Exercises 2.1 to 2.4. 2.1 makes the two empty shapefiles, in EPSG:3123, with the prescribed fields and names. 2.2 is the one everyone does: the area from the TD with the plugin. 2.3 and 2.4 are the other two starting points; if time is short, do 2.3 and read 2.4. Check: nine corners, and the tie line from BLLM No. 1 to corner 1 is 1,283.45 metres. The finished shapefiles are in outputs if you need to catch up.
+
+---
+
 ## Afternoon check-in: how did *plotting* go?
 
 <bnhr-timer minutes="3" extra="1"></bnhr-timer>
@@ -1621,6 +1787,62 @@ Note:
 
 Note:
 (About 14:50, before the afternoon break.) Same as this morning: three questions on the shapefiles and plotting, then the traffic light, and the file in the folder.
+
+---
+
+## Check the geometry *before* computing.
+
+<div class="split">
+<div>
+<div class="rows stack">
+<div><b>Invalid</b>a wrong area and a wrong TD</div>
+<div><b>Check validity</b>marks where the boundary crosses itself</div>
+<div><b>Fix by hand</b>with the Vertex Tool, against the TD</div>
+</div>
+<div class="alert"><b>Not Fix geometries:</b> it cuts the area in two.</div>
+</div>
+<div class="shot-col">
+<div class="screenshot-container"><img src="img/course/check-validity.png" alt="The sample boundary with two corners swapped: the polygon crosses itself, and Check validity marks the self-intersection"></div>
+<p class="slide-source">The sample with two corners swapped, checked</p>
+</div>
+</div>
+
+Note:
+(15:10.) Everything after this reads the polygon: the area, the corners, the bearings. So check it first. The broken sample has two corners swapped, so the boundary crosses itself, and one corner entered twice. Check validity, GEOS method, marks the crossing. Fix it by hand with the Vertex Tool: put the corners back in the TD's order and delete the repeated one. Don't reach for Fix geometries: it makes the polygon valid by cutting it into two parts, which is valid and wrong.
+
+---
+
+## The guide's rules for the *attribute* values.
+
+<div class="rows">
+<div><b>Never abbreviate</b>General Nakar, not Gen. Nakar; the applicant's name in full</div>
+<div><b>Region</b>in Roman numerals: IV-A</div>
+<div><b>Two or more</b>alphabetical, a comma only: Batangan,Maigang</div>
+<div><b>AREA</b>in hectares, from <code>area($geometry)</code>, not <code>$area</code></div>
+</div>
+
+<p class="steps-note">Several parcels: one polygon shapefile for all, one point shapefile per parcel.</p>
+
+Note:
+The rules the guide puts on the values. No abbreviations, anywhere. Region in Roman numerals. Two or more municipalities or barangays: alphabetical, separated by a comma and nothing else, not even a space. And the area: area of geometry computes on the national grid, the same plane as the TD; dollar-area computes on the ellipsoid, and differs in the fourth decimal of the hectares, enough for a reviewer to see two areas. For several parcels: all the parcels in one polygon shapefile, one feature each, and one point shapefile per parcel with its own numbering.
+
+---
+
+## Your turn: Exercises *2.5 and 2.6*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>2.5</b>The broken sample, checked and fixed by hand</div>
+<div><b>2.6</b>AREA and the location fields, computed</div>
+</div>
+<div class="callout done"><b>Done when</b> Check validity finds nothing, AREA reads 23.7585, and BARANGAY reads Batangan,Maigang.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-02.svg" alt="QR code for Module 2 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">02-preparing-the-area-data/</span></p></div>
+</div>
+
+Note:
+Exercises 2.5 and 2.6. Fix the broken sample until Check validity returns nothing, then compute the area in hectares and the location fields from the reference layers. The sample's AREA is 23.7585; the barangays are Batangan and Maigang, alphabetical, comma only; the municipality General Nakar; the region IV-A. Then read "Multiple parcels" at the end of the module.
 
 ---
 
@@ -1711,6 +1933,114 @@ Note:
 
 ---
 
+## A technical description has *three* parts.
+
+| Part | What it holds | The sample |
+|:--|:--|:--|
+| Lines | One per side: the line, its bearing, its distance | `1-2` · S 70° 48' 03" E · 186.90 m |
+| Tie line | Bearing and distance, tie point to corner 1 | N 35° 19' 55" E · 1,283.45 m from BLLM No. 1 |
+| Original coordinate | The tie point's easting, northing, datum and zone | E 560167.218 · N 1628537.085 · PRS 1992 Zone III |
+
+<p class="steps-note">The guide: the tie point's coordinates and the tie line are always given, and complete.</p>
+
+Note:
+(08:55, Module 3.) Yesterday we read a TD to plot the area; today we write one from the area. Three parts. The lines, one per side of the area, corner to corner, with a bearing and a distance in metres. The tie line, from the tie point, here BLLM No. 1, to corner 1. And the original coordinate of that tie point, with its datum and zone. The guide is strict on the last two: they are always given, always complete.
+
+---
+
+## QGIS gives azimuths; the TD wants *bearings*.
+
+<div class="split">
+<div class="compact">
+
+| Azimuth | Bearing |
+|:--|:--|
+| 0° to 90° | N *az* E |
+| 90° to 180° | S (180° − *az*) E |
+| 180° to 270° | S (*az* − 180°) W |
+| 270° to 360° | N (360° − *az*) W |
+
+</div>
+<div class="shot-col">
+<div class="screenshot-container figure"><img src="img/course/bearing-quadrants.svg" alt="One example line in each quadrant, with its azimuth measured clockwise from north and its bearing measured from north or south toward east or west"></div>
+</div>
+</div>
+
+Note:
+An azimuth runs clockwise from north, zero to 360. A bearing starts from north or south and turns toward east or west, zero to 90. QGIS's azimuth function gives azimuths, so every bearing we write is converted, quadrant by quadrant. Line 1-2 of the sample has an azimuth of about 109 degrees: second quadrant, so south, 180 minus 109, east: S 70° 48' 03" E. The Field Calculator expression in Exercise 3.3 does this for every line.
+
+---
+
+## Add X/Y fields is safe with *four* settings.
+
+<div class="numbered">
+<div><span class="n">1</span><span class="t"><b>The layer's own CRS</b>Its default, EPSG:4326, writes degrees; another datum moves corners 7.7 m.</span></div>
+<div><span class="n">2</span><span class="t"><b>Run normally</b>Not as Edit Features In-Place: there it stops with an error.</span></div>
+<div><span class="n">3</span><span class="t"><b>On the vertices, prefixed</b><code>NE_</code> on the vertices, not on the shapefile, where it makes <code>x_2</code>.</span></div>
+<div><span class="n">4</span><span class="t"><b>Rounded</b>It keeps ten decimals; the guide's coordinates have three.</span></div>
+</div>
+
+Note:
+The guide names the tool: compute the northings and eastings with Add X/Y fields. It computes correctly, but four of its defaults work against the prescribed shapefile. Its CRS defaults to WGS 84, which writes degrees, and any other CRS converts silently, 7.7 metres for the wrong datum, with no warning. In place, it fails. On a layer that already has X and Y it names its fields x_2 and y_2, because shapefile names ignore case; so run it on the vertices with a prefix, and copy the corners into the shapefile afterwards. And round to three decimals.
+
+---
+
+## Your turn: Exercises *3.1 and 3.2*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>3.1</b>The corners, extracted and numbered from corner 1</div>
+<div><b>3.2</b>NORTHINGS and EASTINGS, with Add X/Y fields</div>
+</div>
+<div class="callout done"><b>Done when</b> there are nine corners, and corner 1 reads N 1629584.143, E 560909.453.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-03.svg" alt="QR code for Module 3 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">03-technical-descriptions/</span></p></div>
+</div>
+
+Note:
+Exercises 3.1 and 3.2. Extract vertices gives ten points for nine corners: in a closed polygon the last vertex repeats the first, so delete it. Number the corners from corner 1, where the tie line lands; the workbook has the expression for a polygon that starts elsewhere. Then the coordinates, with the four settings on the last slide. Corner 1 is northing 1629584.143, easting 560909.453.
+
+---
+
+## The tie line ties the area to a *known* point.
+
+<div class="split">
+<div class="rows stack">
+<div><b>From</b>the tie point, BLLM No. 1, in the TD's datum</div>
+<div><b>To</b>corner 1, and only corner 1</div>
+<div><b>Written</b>"Point 1 is N 35° 19' 55" E, 1,283.45 m from BLLM No. 1"</div>
+</div>
+<div class="shot-col">
+<div class="screenshot-container"><img src="img/course/tie-line.png" alt="The sample's tie line, a dashed line from the BLLM to corner 1, labelled N 35 degrees 19 minutes 55 seconds E, 1,283.45 m"></div>
+<p class="slide-source">The sample's tie line, from BLLM No. 1 to corner 1</p>
+</div>
+</div>
+
+Note:
+(10:10.) The lines describe the shape; the tie line puts it on the ground. Without it, the same nine lines could be anywhere. It runs from a monument with known coordinates, here BLLM No. 1, to corner 1, and is written as a bearing and a distance in the guide's sentence. The tie point must be in the same datum as everything else: a BLLM's Luzon 1911 coordinates in a PRS 1992 project is the 7.7 metres from yesterday.
+
+---
+
+## Your turn: Exercises *3.3 to 3.5*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>3.3</b>The lines: bearing and distance for each side</div>
+<div><b>3.4</b>The tie line, from BLLM No. 1 to corner 1</div>
+<div><b>3.5</b>The TD and the coordinates, exported with the prescribed names</div>
+</div>
+<div class="callout done"><b>Done when</b> line 1-2 reads S 70° 48' 03" E, 186.90, and both <code>TD_IV-A_SFLMA_…</code> files exist.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-03.svg" alt="QR code for Module 3 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">03-technical-descriptions/</span></p></div>
+</div>
+
+Note:
+Exercises 3.3 to 3.5. One line per side, with its bearing in degrees, minutes and seconds and its distance in metres. Line 1-2 is S 70° 48' 03" E, 186.90 metres. Then the tie line: N 35° 19' 55" E, 1,283.45 metres. Then export the TD as a spreadsheet and the corner coordinates as CSV, both named TD_IV-A_SFLMA_ and the applicant's name.
+
+---
+
 ## Morning check-in: the TD and the *tie line*.
 
 <bnhr-timer minutes="3" extra="1"></bnhr-timer>
@@ -1727,6 +2057,74 @@ Note:
 
 ---
 
+## The prescribed map has *eleven* elements.
+
+<div class="split map-shot">
+<div class="rows">
+<div><b>1–4</b>the main map, the TD, the original coordinate, the location map</div>
+<div><b>5–9</b>north arrow, title, location and area, scale and projection, legend</div>
+<div><b>10–11</b>the office and certification, the signatories</div>
+</div>
+<div class="shot-col">
+<div class="screenshot-container"><img src="img/course/final-map-annotated.png" alt="The sample application's prescribed map on an A3 landscape page, with its eleven elements numbered"></div>
+<p class="slide-source">The sample's map, A3 landscape, its elements numbered</p>
+</div>
+</div>
+
+Note:
+(13:00, Module 4.) The guide asks the map for the title, location, area and projection; the prescribed SFLMA format puts eleven elements on the page. The main map with its numbered corners and a latitude and longitude grid, the TD table with the tie line under it, the original coordinate, and a small location map. Then the title block: north arrow, title, location and area, scale and projection, legend. And the office, the certification and the four signatories. This afternoon we build it once, and save it as a template.
+
+---
+
+## Read every value from the layer; never *type* it.
+
+```text
+[% 'Area = ' || aggregate('area_boundary', 'max', "AREA") || ' hectares' %]
+```
+
+<div class="rows">
+<div><b>Typed</b>a second copy of the area, which can drift from the shapefile</div>
+<div><b>Read</b>one value, so the map can't disagree with the attribute table</div>
+</div>
+
+Note:
+The one idea behind the whole layout. Every text on the map that also lives in the data, the applicant's name, the barangays, the area, is read from the layer with an expression, not typed. A typed area is a second copy; the day someone edits the polygon and recomputes AREA, the map still says the old number, and the application comes back. Read from the layer, there is one value, and the map follows it.
+
+---
+
+## The grid takes the map's *own* datum.
+
+| The map's CRS | The grid's CRS |
+|:--|:--|
+| PRS92 / Philippines zone 1 to 5 (EPSG:3121 to 3125) | **PRS92**, EPSG:4683 |
+| Luzon 1911 / Philippines zone I to V (EPSG:25391 to 25395) | **Luzon 1911**, EPSG:4253 |
+
+<p class="steps-note">Not WGS 84: at the sample, the same latitude and longitude are 221 m apart.</p>
+
+Note:
+The prescribed map labels its grid in degrees, minutes and seconds. A grid has its own CRS, separate from the map's, so the main map stays in EPSG:3123 and only the grid goes geographic. But latitude and longitude depend on the datum too: in WGS 84, the default everyone picks, the same numbers at the sample are 221 metres from PRS92's. So the grid takes the geographic CRS of the map's datum.
+
+---
+
+## Your turn: Exercises *4.1 to 4.5*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>4.1–4.2</b>The A3 page, the main map, the grid</div>
+<div><b>4.3–4.4</b>The area and corners styled; the TD and coordinate tables</div>
+<div><b>4.5</b>The title block, read from the layer</div>
+</div>
+<div class="callout done"><b>Done when</b> the map reads "Area = 23.7585 hectares", and the grid reads 14°44'00"N.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-04.svg" alt="QR code for Module 4 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">04-maps-and-layouts/</span></p></div>
+</div>
+
+Note:
+Exercises 4.1 to 4.5. The page, the main map and the grid; the area and corners styled; the two tables; then the title block with expressions. The check: the area reads 23.7585 hectares, straight from the attribute, and the grid is labelled in degrees, minutes and seconds, 14°44'00"N and 121°34'00"E around the sample. If NRDC's format differs from what we saw yesterday, this is where we change it.
+
+---
+
 ## Afternoon check-in: how is the *map* going?
 
 <bnhr-timer minutes="3" extra="1"></bnhr-timer>
@@ -1740,6 +2138,41 @@ Note:
 
 Note:
 (About 14:50, before the afternoon break.) Three questions on the page, the grid and the title block, then the traffic light, and the file in the folder.
+
+---
+
+## The signatories are your office's to *confirm*.
+
+<div class="rows">
+<div><b>Prepared by</b>PENRO/CENRO GIS Focal or Concerned Permanent Staff</div>
+<div><b>Noted by</b>Chief, Regulation and Permitting Section</div>
+<div><b>Noted by</b>Chief, Technical Services Division</div>
+<div><b>Attested by</b>PENRO/CENR Officer</div>
+</div>
+
+<div class="alert">Confirm the page size, the certification and the names with your office. The sample's logo is a placeholder.</div>
+
+Note:
+(15:10.) The prescribed format's four signatories: prepared by the GIS focal person or permanent staff, noted by the chiefs of the RPS and the TSD, attested by the PENRO or CENR officer. These, the certification text and the page size are where offices differ most, so this is where NRDC's format from Monday goes into the template.
+
+---
+
+## Your turn: Exercises *4.6 to 4.9*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>4.6–4.7</b>The location map, the legend, certification and signatories</div>
+<div><b>4.8</b>The layout, saved as a template</div>
+<div><b>4.9</b>The map, exported as PDF</div>
+</div>
+<div class="callout done"><b>Done when</b> your <code>.qpt</code> is saved, and the PDF shows all eleven elements.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-04.svg" alt="QR code for Module 4 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">04-maps-and-layouts/</span></p></div>
+</div>
+
+Note:
+Exercises 4.6 to 4.9. The location map, the legend, the certification and signatories, then save the layout as a template: that file is what you take home. Export the map as IV-A_SFLMA_Map_ and the applicant's name, open the PDF, and check it against the eleven elements. The finished template is SFLMA-prescribed-map.qpt in outputs.
 
 ---
 
@@ -1830,6 +2263,116 @@ Note:
 
 ---
 
+## One atlas, a map for *every* application.
+
+<div class="rows">
+<div><b>Coverage layer</b>the area boundary: one page per application</div>
+<div><b>Labels</b><code>"NAME"</code> instead of <code>aggregate('area_boundary', 'max', "NAME")</code></div>
+<div><b>Tables</b>filtered to <code>"NAME" = attribute(@atlas_feature, 'NAME')</code></div>
+<div><b>The PDF</b>named from the application's attributes</div>
+</div>
+
+<p class="steps-note">The merged layers are for making maps. Each application is still submitted with its own files.</p>
+
+Note:
+(08:55, the rest of Module 4.) Yesterday's layout works for one application; every new one means re-zooming and checking each label. The atlas takes a coverage layer, the area boundary, and makes one page per feature: the map follows the application, the labels read its attributes directly, and the file is named from them. For several applications we merge them into working layers keyed by NAME, and filter the tables and the tie line to the current one. The merged layers only make the maps: each application still goes in with its own shapefiles, TD and coordinates.
+
+---
+
+## Your turn: Exercises *4.10 to 4.13*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>4.10</b>The atlas, driving yesterday's layout</div>
+<div><b>4.11</b>Both applications, merged and keyed by NAME</div>
+<div><b>4.12</b>Every table and label filtered to the current one</div>
+<div><b>4.13</b>One PDF for each application</div>
+</div>
+<div class="callout done"><b>Done when</b> page 2 shows the Luntiang Bundok Agroforestry Association, 20.15 ha.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-04.svg" alt="QR code for Module 4 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">04-maps-and-layouts/</span></p></div>
+</div>
+
+Note:
+Exercises 4.10 to 4.13. Turn on the atlas, merge the second application in, filter, and step through the preview: page 2 is the Luntiang Bundok Agroforestry Association, 20.15 hectares, with its own tables, tie line and title. Export the atlas: two PDFs, one per applicant. 4.12 is the hardest exercise of the course; its finished template is in outputs.
+
+---
+
+## Every value in two outputs must *agree*.
+
+| Value | Appears in |
+|:--|:--|
+| Corner coordinates | The point shapefile, the coordinates file, the TD's traverse |
+| Bearings and distances | The TD, the map's table, the polygon |
+| Area | The polygon, AREA, the map, the TD's traverse |
+| Location and applicant | Both shapefiles, the map's title block, the file names |
+
+<p class="steps-note">Rounding is not an error: it moves the sample's corners 7 mm, and its area 4.6 m².</p>
+
+Note:
+(10:10, Module 5.) Why cross-validate: reviewers compare the four outputs against each other, so every value that appears twice must agree. Some difference is expected: bearings rounded to the second and distances to the centimetre don't rebuild a polygon to the millimetre. On the sample, rounding moves corners by up to 7 millimetres and the area by 4.6 square metres. The checks separate that from real errors.
+
+---
+
+## A TD that closes adds up to *zero*.
+
+<div class="rows">
+<div><b>Each line</b>departure = distance × sin(azimuth), latitude = distance × cos(azimuth)</div>
+<div><b>Misclosure</b>how far the sums of the departures and the latitudes miss zero</div>
+<div><b>Precision</b>the perimeter divided by the misclosure</div>
+</div>
+
+| TD | Misclosure | Precision |
+|:--|:--|:--|
+| The sample | 0.005 m | 1:369,491 |
+| The returned application | 447.92 m | 1:3 |
+
+Note:
+Closure. Walk the TD's lines from corner 1 and you should land back on corner 1: the east-west parts, the departures, and the north-south parts, the latitudes, each add to zero. How far they miss is the misclosure, and the perimeter over the misclosure is the relative precision. The sample closes within five millimetres. The returned application misses by almost half a kilometre; no rounding does that. Ask the room what could: one bearing with its E and W swapped.
+
+---
+
+## One fault for every *check*: find them.
+
+<div class="split">
+<div class="rows stack">
+<div><b>Closure</b>does the TD close?</div>
+<div><b>Area</b>does AREA match the polygon?</div>
+<div><b>Corners</b>do the coordinates match the points?</div>
+<div><b>Attributes</b>do the values follow the guide?</div>
+</div>
+<div class="shot-col">
+<div class="screenshot-container"><img src="img/course/returned-overview.png" alt="The returned application's six-corner boundary in red, overlapping an existing tenure in blue and crossing the edge of the forest land in green"></div>
+<p class="slide-source">Returned (red), a tenure (blue), forest land (green)</p>
+</div>
+</div>
+
+Note:
+The rest of the morning works on a fictional returned application with one deliberate fault for each check. Don't tell them what's wrong; let them find it. The answers, for you: one bearing has E and W swapped, a misclosure of 447.92 m. AREA says 15.1427 ha, the polygon 14.7927. Corner 5 has its easting and northing swapped, and corner 3 lies 2.5 m off the boundary. X is filled in on corner 2, REGION reads "Region IV-A", the municipality is "Gen. Nakar", the barangays "Pisa, Batangan", and the corners disagree with the boundary on three fields. After the check-in: it overlaps an existing tenure, 5.20 ha lies outside the forest land, and it touches only Batangan.
+
+---
+
+## Your turn: Exercises *5.1 to 5.4*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>5.1</b>Does the TD close?</div>
+<div><b>5.2</b>Does the area agree everywhere?</div>
+<div><b>5.3</b>Do the corners agree everywhere?</div>
+<div><b>5.4</b>Do the attributes follow the guide?</div>
+</div>
+<div class="callout done"><b>Done when</b> you've found a fault in each, and can say which line, corner or field it is.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-05.svg" alt="QR code for Module 5 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">05-cross-validation-and-qc/</span></p></div>
+</div>
+
+Note:
+Exercises 5.1 to 5.4, on the returned application, loaded as area_boundary and area_corners so the same expressions work on any application later. Each exercise is an expression you keep. Ask each table to name the faults it found before the check-in; the answers are in the last slide's notes.
+
+---
+
 ## Morning check-in: the atlas and the *checks*.
 
 <bnhr-timer minutes="3" extra="1"></bnhr-timer>
@@ -1843,6 +2386,54 @@ Note:
 
 Note:
 (About 11:05, after the attribute checks in 5.4.) Three questions on the atlas and the attribute checks, then the traffic light, and the file in the folder. The answers tell me who to sit with first this afternoon.
+
+---
+
+## Reference layers show where to *look*.
+
+<div class="rows">
+<div><b>Existing tenures</b>Select by Location: does the area intersect one?</div>
+<div><b>Forest land</b>Difference: any output is area outside it</div>
+<div><b>Barangays</b>recompute them from the polygon, and compare with the attribute</div>
+</div>
+
+<div class="alert">An overlap is something to verify with the source records, not a finding.</div>
+
+Note:
+(11:10.) The last checks are against other data: existing tenures, the forest land, the barangays. On the returned application all three fire. But reference layers, administrative boundaries especially, are not always authoritative. An overlap tells you where to look in the records; it doesn't decide the application.
+
+---
+
+## One checklist, before every *submission*.
+
+<div class="steps" style="--n: 5">
+<div class="step"><div class="n">1</div><div class="name">CRS</div><div class="what">One datum and zone; nothing converted; the grid on the map's datum.</div></div>
+<div class="step"><div class="n">2</div><div class="name">Shapefiles</div><div class="what">The prescribed fields; valid, fixed by hand; X and Y blank.</div></div>
+<div class="step"><div class="n">3</div><div class="name">TD</div><div class="what">Numbered with the corners; it closes; the tie line complete.</div></div>
+<div class="step"><div class="n">4</div><div class="name">Map</div><div class="what">Every element, read from the attributes; signatories complete.</div></div>
+<div class="step ours"><div class="n">5</div><div class="name">Files</div><div class="what">Every name in the prescribed format.</div></div>
+</div>
+
+Note:
+Exercise 5.6 is the checklist that ends every application: five groups, seventeen boxes, in the workbook. It is the checklist you take home, with the reasons for NRDC's returns from Monday added to it.
+
+---
+
+## Your turn: Exercises *5.5 and 5.6*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>5.5</b>The returned application, against the reference layers</div>
+<div><b>5.6</b>The checklist, on the sample</div>
+</div>
+<div class="callout done"><b>Done when</b> you've found the overlap and the 5.20 ha outside the forest land, and every box on the sample is ticked.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/workbook-05.svg" alt="QR code for Module 5 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">05-cross-validation-and-qc/</span></p></div>
+</div>
+
+Note:
+Exercises 5.5 and 5.6. The returned application overlaps an existing tenure, has 5.20 hectares outside the forest land, and touches only Batangan though its attribute says Pisa and Batangan. Then the checklist on Bagong Gubat, which should pass every box. Thirty minutes, then the post-test.
 
 ---
 
@@ -1898,6 +2489,21 @@ Note:
 
 Note:
 The capstone, on NRDC's own data: one application from start to finish, on your own or in a small group, without the sample outputs to lean on. I go from computer to computer; this is the time to bring every question about your real work. At 16:15 each person or group shows its four outputs and its QC results, a few minutes each.
+
+---
+
+## The capstone: four outputs that *agree*.
+
+<div class="rows">
+<div><b>Done when</b>four outputs, named as the guide prescribes, and every Module 5 check passes</div>
+<div><b>At 16:15, show</b>the map, the checklist, and one thing that failed and how you fixed it</div>
+<div><b>Each</b>about five minutes, so every person or group gets a turn</div>
+</div>
+
+<p class="steps-note">Checks that pass on your own data are the ones you'll trust on the next application.</p>
+
+Note:
+What finished means this afternoon: all four outputs, in the prescribed names, and every check from this morning passing, on your own application. At 16:15, show the map and the checklist, and tell us one thing that failed and how you fixed it: that's where the room learns most. About five minutes each; with more groups than the half hour holds, shorten it, and keep the "what failed".
 
 ---
 
