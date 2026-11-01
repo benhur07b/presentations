@@ -29,8 +29,8 @@ with it, then check it with `uv run scripts/check_links.py <folder>`. Nothing he
 is in `index.html` and its folder exists, new-deck says so and writes nothing; a folder of another deck, or a card that
 names another folder, stops it.
 
-deck-of answers which folder a training's deck is in, from its card, and the paths a room kit copies for it: the folder,
-and `assets/`, which every deck's pages link to.
+deck-of answers which folder a training's deck is in, from its card, and the paths a copy of it needs (offline_deck.py's,
+which the room kit holds): the folder, and `assets/`, which every deck's pages link to.
 
 Assumptions: the hub sits beside this repository (`../learn-factory`, as in the factory's workspace) or is given with
 --hub; its own command needs Node (`nvm use 24`) and `npm run generate` done there.
@@ -72,6 +72,7 @@ TIMERS = {"pre": (10, 3), "post": (8, 3), "check-in": (3, 1)}
 HAND_IN = {"assistant": "hand the file it downloads to the training assistant", "drive": "put the file it downloads in the shared folder",
            "send": "send the file it downloads with the page's buttons"}
 NUMBERS = "one two three four five six seven eight nine ten".split()
+SHARED = ("assets",)  # what every deck's pages link to beside its own folder: a copy of a deck takes it too
 CARD = re.compile(r'<li data-training="(?P<id>[^"]+)">.*?<a href="(?P<href>[^"]+)"', re.S)
 
 Run = Callable[[list[str], Path], subprocess.CompletedProcess]
@@ -469,7 +470,7 @@ def deck_of(training: str, root: Path = ROOT) -> dict:
     folder = cards[training]
     if not (root / folder).is_dir():
         raise Stop(DATA, f"index.html's card for {training} names {folder}/, which is not here")
-    return {"training": training, "folder": folder, "paths": [folder, "assets"]}
+    return {"training": training, "folder": folder, "paths": [folder, *SHARED]}
 
 
 def main(argv: list[str] | None = None) -> int:

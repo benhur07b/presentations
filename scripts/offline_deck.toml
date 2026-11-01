@@ -1,0 +1,11 @@
+# The packages a deck may load from cdn.jsdelivr.net, pinned for its offline copy (scripts/offline_deck.py): each one's
+# version, and npm's integrity of that version's tarball, which every copy checks. Written by `offline_deck.py pin NAME
+# VERSION`, never by hand.
+
+[packages."reveal.js"]
+version = "5.2.1"
+integrity = "sha512-r7//6mIM5p34hFiDMvYfXgyjXqGRta+/psd9YtytsgRlrpRzFv4RbH76TXd2qD+7ZPZEbpBDhdRhJaFgfQ7zNQ=="
+
+[packages."reveal.js-copycode"]
+version = "1.4.2"
+integrity = "sha512-j5EPxKkSi3OqzhAPWe8a8hYH13X9WbNCTt0Rp+URgQIgFMT5sCqDT38zokpJR8pbXzb8Ta93J+qlk1FGt7ae+w=="
