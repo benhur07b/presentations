@@ -22,8 +22,8 @@ each course's workbook and its code, then each day: its section, its agenda (a t
 schedule), and a slide per quiz round, each with its timer and QR code, and the shared folder's code when the trainer's
 file gives one: on the day the trainer's agenda lists the round, in its order, so a pre-test run the day before its
 test's day (a module over two days) is in that day's section; from a trainer that keeps no quiz places, on its test's
-day, the pre-test first and the post-test last; `deck.css`; `img/qr/*.svg`; and a `.gitignore` that keeps
-`index.md` out of git, as every deck here does (the built `index.html` holds the slides). Every link is made by the
+day, the pre-test first and the post-test last; `deck.css`; and `img/qr/*.svg`. `index.md` is committed with the
+deck, as every deck's source here is, so the deck can be built again from it. Every link is made by the
 quizzes' own rule, `<quizzes>/<set>/<quiz>/<round>/` (no round for a quiz with one), from the listing's ids: the same
 address the trainer's notebooks and QR codes give. It adds the deck's card to `index.html`, at the top of its year,
 marked with the training's id (`<li data-training="ID">`): that mark is how `deck-of` finds a training's deck, and how
@@ -452,7 +452,6 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
     slides.append("\n".join(['<!-- .slide: class="section-slide" -->', "", "# Questions?<br>Humayo kayo at magpaka-*open-source*."]))
     files["index.md"] = ("\n".join(front) + "\n" + "\n\n---\n\n".join(slides) + "\n").encode()
     files["deck.css"] = DECK_CSS.format(title=title).encode()
-    files[".gitignore"] = b"index.md\n"
     deck.files = files
     if not outputs:
         deck.notes.append("no shared folder: its trainer's file gives no outputs_url, so its quiz slides have no folder code")
@@ -549,7 +548,7 @@ def main(argv: list[str] | None = None) -> int:
             print("DRY RUN: nothing written. Run again with --apply to write it.", file=sys.stderr)
         elif not deck.present:
             print(f"Next, the presenter's: write the rest of {deck.folder}/index.md with the slides skill, build index.html from it, "
-                  f"then `uv run scripts/check_links.py {deck.folder}`; commit on a branch.", file=sys.stderr)
+                  f"then `uv run scripts/check_links.py {deck.folder}`; commit both on a branch.", file=sys.stderr)
     except Stop as stop:
         print(f"error: {stop}", file=sys.stderr)
         return stop.code
