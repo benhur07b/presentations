@@ -1724,6 +1724,40 @@ Note:
 
 ---
 
+## Clean area data passes *twelve* checks.
+
+<div class="steps" style="--n: 3">
+<div class="step"><div class="n">Checks 1 to 5</div><div class="name">The files</div><div class="what">Where it came from, the files, the CRS, the encoding, the field names.</div></div>
+<div class="step"><div class="n">Checks 6 to 10</div><div class="name">The geometry</div><div class="what">Its type, one feature per parcel, validity, holes, and only real corners.</div></div>
+<div class="step"><div class="n">Checks 11 and 12</div><div class="name">The values</div><div class="what">The attributes as the guide writes them, and the place they name.</div></div>
+</div>
+
+<p class="steps-note">Where to look: Layer Properties, the attribute table, the Field Calculator's preview, Check validity.</p>
+
+Note:
+(11:05.) The primer, Is your area data ready? The course's sample is clean: it was plotted from its technical description, in the right CRS, with the guide's fields. Area data from an applicant, an office's archive or another program often isn't. Twelve checks, in three groups. The files: how the layer was made, plotted from a TD or traced; the .prj and the .cpg beside the .shp; the TD's datum and zone; names that read correctly, ñ and not a question mark; the guide's field names, none cut at 10 characters. The geometry: a polygon with no Z or M; one feature per parcel, checked first, so that each feature you check after is one parcel; valid; no holes unless they are real exclusions; every vertex a real corner. Many more vertices than the TD has corners, and holes the size of raster cells, are the signs of a traced layer. The values: REGION in Roman numerals, nothing abbreviated, names spelled as the reference layers spell them; and the area inside the municipality and barangays it names. It is the input's side of the final QC checklist we use on Day 3.
+
+---
+
+## Your turn: check *your own* data.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>P1.1</b>The sample first: every check passes, so you see what clean reads like</div>
+<div><b>Your data</b>The twelve checks, with its TD at hand</div>
+<div><b>Your list</b>What each check reads, and whether it passes</div>
+</div>
+<div class="callout done"><b>Done when</b> every check has a line on your list. Fix nothing yet: that comes on Day 3.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/primer-p1.svg" alt="QR code for the primer, Is your area data ready?, in the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">p1-is-your-area-data-ready/</span></p></div>
+</div>
+
+Note:
+(11:05 to 11:30; the half hour to lunch is for it to run on, or for questions.) P1.1 takes about ten minutes on the sample: the Information page, the attribute table, the expressions in the Field Calculator's preview, Check validity. Then your own data, with its TD if you have it. Write down, for each check, what your layer reads and whether it passes, and which problems you could fix yourself and which are for the data's owner to answer. Keep the list: tomorrow we hold it against Module 3, and on Day 3 the capstone starts from it. If you didn't bring data, pair with someone who did.
+
+---
+
 ## The guide's field types, in *QGIS's* words.
 
 | The guide (ArcGIS) | QGIS type | Length | Precision |
@@ -1844,6 +1878,62 @@ Exercises 2.5 and 2.6. Fix the broken sample until Check validity returns nothin
 
 Note:
 (15:10, after the break: Module 2 is done.) Same as this morning: three questions on the shapefiles and plotting, then the traffic light, and the file in the folder. Then the drill.
+
+---
+
+## One messy application, every problem *once*.
+
+<div class="split map-shot">
+<div class="rows">
+<div><b>The drill</b>two parcels, as the applicant sent them</div>
+<div><b>Find</b>the twelve checks, nothing fixed yet</div>
+<div><b>Fix</b>one at a time, each with its check</div>
+<div><b>Prove</b>the TD's corners on its vertices</div>
+</div>
+<div class="shot-col">
+<div class="screenshot-container"><img src="img/course/d1-delivered.png" alt="The drill's application as delivered, on the reference layers: two parcels, the second across the boundary with Infanta, with small holes in both"></div>
+<p class="slide-source">As delivered: four holes, a parcel in Infanta</p>
+</div>
+</div>
+
+Note:
+(15:15, after the check-in, until 16:00; the half hour after it is a buffer for Module 2 and the drill.) A fictional application, the Piñahan sa Lambak Agroforestry Cooperative's, with every problem of this morning's checklist once: no .cpg, so the ñ in its name reads wrong; in WGS 84; PolygonZ; two parcels in one feature; holes the size of raster cells, one of which makes it invalid; 249 vertices for the 12 corners of its TD; a field cut at 10 characters and one not named as the guide names it; the region and the municipality written wrong; and part of parcel 2 in Infanta. First find them all with the checklist, D1.1, and write them down, as you did with your own data. Then fix them.
+
+---
+
+## Each fix makes the *next* one possible.
+
+<div class="steps" style="--n: 4">
+<div class="step"><div class="n">D1.2 and D1.3</div><div class="name">Read it</div><div class="what">The encoding set, then reprojected into the TD's zone.</div></div>
+<div class="step"><div class="n">D1.4 to D1.8</div><div class="name">The geometry</div><div class="what">From the whole to the detail: Z values, parts, holes, vertices.</div></div>
+<div class="step"><div class="n">D1.9 and D1.10</div><div class="name">The fields</div><div class="what">The guide's names, then the values computed again.</div></div>
+<div class="step ours"><div class="n">D1.11 and D1.12</div><div class="name">The checks</div><div class="what">The location flagged; the corners against the TD.</div></div>
+</div>
+
+<div class="alert"><b>Reproject, don't assign:</b> assigned EPSG:3123, its degrees land 1,740 km away.</div>
+
+Note:
+The order is the lesson: first what lets you read the data, its names and its coordinates in metres; then the geometry, from the whole to its details; then the fields and their values, which the geometry's changes make out of date; and last the checks. Reproject layer converts the coordinates; assigning a CRS only relabels them. The holes are raster cells of 100 square metres: Delete holes below 500, so a larger hole, which could be a real exclusion, stays, and ask the data's owner before you delete one; record the 0.05 ha it adds. The validity error is in a hole, so deleting the hole fixes it: not Fix geometries, which splits the hole and keeps it. Simplify, Douglas-Peucker at 0.01 m, removes only the vertices on straight lines. And the part in Infanta is not yours to fix: flag it, 0.6139 ha, for the data's owner.
+
+---
+
+## Your turn: Drill *D1*.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>D1.1</b>Find: every problem, written down</div>
+<div><b>D1.2 to D1.11</b>Fix: each with its check</div>
+<div><b>D1.12</b>Prove: against the TD, saved in UTF-8</div>
+<div><b>D1.13</b>Stretch: the cleaning as one Processing model</div>
+</div>
+<div class="callout done"><b>Done when</b> no corner of the TD is off a vertex, the parcels have 7 and 5 corners, and AREA reads 14.2783 and 5.4771.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/drill-d1.svg" alt="QR code for the debugging drill, Clean a messy application, in the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">d1-debugging-drill/</span></p></div>
+</div>
+
+Note:
+Each fix ends with its check, which shows the problem before the fix and passes after it. D1.12 is the proof: load the TD's corners as points and select those more than a millimetre from a vertex of the cleaned layer; none should be selected. Then save it as a shapefile in UTF-8, which writes its .cpg. Finished early: D1.13, the same cleaning as a Processing model, the way an office cleans its next application in one run. What is left of the drill at 16:30 carries into tomorrow's prep, from 08:00.
 
 ---
 
@@ -2056,6 +2146,22 @@ Exercises 3.3 to 3.5. One line per side, with its bearing in degrees, minutes an
 
 Note:
 (11:40, after Module 3 and its time to run on.) Three questions on the corners, the technical description and the tie line, then the traffic light, and the file in the folder.
+
+---
+
+## Would your data pass *Module 3*?
+
+<div class="rows">
+<div><b>Holes</b>Extract vertices gives a hole's vertices as corners (check 9)</div>
+<div><b>Extra vertices</b>each one becomes a corner, and a line of the TD (check 10)</div>
+<div><b>Parcels in one</b>one TD for all of them, not one per parcel (check 7)</div>
+<div><b>Another CRS</b>distances in degrees, bearings off the grid (check 3)</div>
+</div>
+
+<p class="steps-note">Your list from Day 1: which of these did it find?</p>
+
+Note:
+(11:45, five to ten minutes, then questions until lunch.) Take out yesterday's list. This morning's steps read every vertex of the polygon, so what the checklist found becomes a wrong TD. A hole: Extract vertices gives its vertices as corners, and the TD gets lines that are not the boundary's. A vertex on a straight line, or a traced boundary's hundreds of vertices: each becomes a corner and a line. Several parcels in one feature: one TD for all, where the guide wants each parcel's on its own sheet. A layer in WGS 84: distances in degrees. Ask two or three people what their list would break, then open the floor for questions.
 
 ---
 
@@ -2478,6 +2584,26 @@ Note:
 
 Note:
 The capstone, on NRDC's own data, in four parts, each with what you have by its end. Until 13:40, lunch in between, clean your own data against your list from Day 1, the drill's fixes in order, until the layer passes the checklist. Then, in groups, one application from plot to final: your own TD if your office has one, else your cleaned layer, else my TD; by 15:00, the shapefiles, the TD and the coordinates. After the break, the map from your template, Module 5's checks and the final QC checklist, by 15:40. Twenty minutes for it to run on, then at 16:00 each group shows its outputs and QC results. What you need from the office, you find and prepare as you go. I go from group to group, without the sample outputs to lean on: this is the time to bring every question about your real work.
+
+---
+
+## Your turn: clean *your own* data.
+
+<div class="split qr-split turn">
+<div>
+<div class="rows">
+<div><b>Your list</b>from Day 1: each check your data failed</div>
+<div><b>In order</b>as in the drill: read it, geometry, fields</div>
+<div><b>Ask first</b>holes and locations: the owner decides</div>
+<div><b>Prove it</b>with its TD, if you have one</div>
+</div>
+<div class="callout done"><b>By 13:40</b> a clean layer, and a note of what you changed.</div>
+</div>
+<div class="qr-col"><img class="qr" src="img/qr/drill-d1.svg" alt="QR code for the debugging drill, Clean a messy application, in the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">d1-debugging-drill/</span></p></div>
+</div>
+
+Note:
+(11:40 until lunch, then to 13:40.) The capstone's first part, on your own: your data, your list from Day 1, and the drill's fixes, in the drill's order, each with its check. What the drill decided for you, you now decide with the data's owner: whether a hole is a real exclusion, and what a part outside the municipality means. Write down what you changed and by how much, the area the deleted holes added, the vertices removed: that goes in your presentation. If your office has the TD, end with D1.12's check. At 13:40 we form the groups.
 
 ---
 
