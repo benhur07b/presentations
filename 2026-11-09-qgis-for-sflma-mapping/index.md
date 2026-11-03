@@ -70,6 +70,22 @@ A few of the maps I post on the page. The ridgelines of Mt Apo, from a free elev
 
 ---
 
+## A lot of *maps*, from open data.
+
+<div class="posts">
+<figure><img src="img/about/post-street-orientation.jpg" alt="Which of these 8 cities has the most grid-like streets? A rose of each city's street directions: Bacolod the most grid-like, Baguio the least"><figcaption>Street orientation</figcaption></figure>
+<figure><img src="img/about/post-below-5m.jpg" alt="1.38 million live below 5 m: Metro Manila residents in areas less than 5 m above sea level, 9.5% of 14.5 million"><figcaption>Below 5 m</figcaption></figure>
+<figure><img src="img/about/post-street-communities.jpg" alt="Streets, represent! Metro Manila's streets split into 16 street communities, against its 17 cities and towns"><figcaption>Street communities</figcaption></figure>
+<figure><img src="img/about/post-validate-network.jpg" alt="Around Metro Manila, 148 roads end just short: a road that stops 2.83 m from another without joining it, flagged by Validate network in QGIS 4"><figcaption>Roads that end short</figcaption></figure>
+</div>
+
+<p class="steps-note">Streets, roads, heights, people: free data, free software, and the code to make them yourself.</p>
+
+Note:
+Four more from the page. Which of eight Philippine cities has the most grid-like streets: Bacolod, and Baguio the least, from OpenStreetMap. How many Metro Manila residents live less than 5 m above sea level: 1.38 million, from a free elevation model and WorldPop. Metro Manila's streets split into 16 communities by an algorithm that was never told where its 17 cities and towns are. And one made in QGIS itself: Validate network, new in QGIS 4, found 148 roads around Metro Manila that end just short of another. Every one is open data and free software.
+
+---
+
 <!-- .slide: class="toc-slide" -->
 
 ## Contents
