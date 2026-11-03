@@ -1,6 +1,6 @@
 # BNHR Presentations
 
-A repository of presentations I've given over the years, published at https://bnhr.xyz/presentations/.
+A repository of presentations I've given over the years, published at https://bnhr.xyz/presentations/. GitHub Pages serves the files as they are committed: the empty `.nojekyll` at the root turns off its Jekyll build, which would otherwise render each deck's `index.md` over its `index.html`.
 
 `index.html` lists the presentations by year, newest first: add a card there for each new folder (a training's deck gets its card from `new-deck`, below). `assets/` holds the index page's link-preview image (`share.png`) and its logo, icon and fonts, which are the BNHR 2026 brand files also used by the workshops index.
 
