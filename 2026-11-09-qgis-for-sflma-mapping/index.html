@@ -1426,7 +1426,7 @@ The Guide for the Standard Mapping, the FMB memorandum of 15 February 2024, asks
 <div class="split map-shot">
 <div class="rows">
 <div><b>Bagong Gubat</b>an agroforestry cooperative applying for about 23.76 ha in General Nakar, Quezon</div>
-<div><b>Day 3</b>a second application joins, and a returned one to check</div>
+<div><b>Day 3</b>four more applications join, and a returned one to check</div>
 </div>
 <div class="shot-col">
 <div class="screenshot-container"><img src="img/course/prescribed-map.png" alt="The prescribed map of the Bagong Gubat Agroforestry Cooperative's application: the area's nine corners, the technical description table, the location map, the title block and the signatories"></div>
@@ -1435,7 +1435,7 @@ The Guide for the Standard Mapping, the FMB memorandum of 15 February 2024, asks
 </div>
 
 Note:
-Every exercise works on one application: the Bagong Gubat Agroforestry Cooperative, about 23.76 hectares in General Nakar, Quezon, in PRS 1992 Zone III. The applicant, the BLLM it is tied to and the tenure layers are made up for the course, so we can break things freely. This is the map you will have made by the end of Day 2. On Day 3 a second application, Luntiang Bundok, comes in to map both with one layout, and a returned application gives us something to cross-check. On the afternoon of Day 3 we switch to one of your own applications.
+Every exercise works on one application: the Bagong Gubat Agroforestry Cooperative, about 23.76 hectares in General Nakar, Quezon, in PRS 1992 Zone III. The applicant, the BLLM it is tied to and the tenure layers are made up for the course, so we can break things freely. This is the map you will have made by the end of Day 2. On Day 3 four more applications come in, to map all five with one layout, and a returned application gives us something to cross-check. On the afternoon of Day 3 we switch to one of your own applications.
 
 ---
 
@@ -2245,7 +2245,7 @@ Note:
 <p class="steps-note">Module 4, 4.10 to 4.13; Module 5, Cross-validation and quality control. The post-test closes the morning.</p>
 
 Note:
-This morning's plan. First the atlas: the layout from yesterday, driven by the atlas so the same template serves any application. Then the second application, Luntiang Bundok, joins the first in one coverage layer, and one layout exports a map for each. After the break, Module 5 on a returned application: does the technical description close, does the area agree across the polygon, the TD, the table and the map, do the corners agree across the shapefile, the coordinates and the TD, and do the attributes and file names follow the guide. Then the overlap checks against forest land and existing tenures, and the final QC checklist. The post-test is at about 11:40, so the afternoon is free for your own applications.
+This morning's plan. First the atlas: the layout from yesterday, driven by the atlas so the same template serves any application. Then four more applications join the first in one coverage layer, and one layout exports a map for each, each at a scale that fits it. After the break, Module 5 on a returned application: does the technical description close, does the area agree across the polygon, the TD, the table and the map, do the corners agree across the shapefile, the coordinates and the TD, and do the attributes and file names follow the guide. Then the overlap checks against forest land and existing tenures, and the final QC checklist. The post-test is at about 11:40, so the afternoon is free for your own applications.
 
 ---
 
@@ -2269,13 +2269,14 @@ Note:
 <div><b>Coverage layer</b>the area boundary: one page per application</div>
 <div><b>Labels</b><code>"NAME"</code> instead of <code>aggregate('area_boundary', 'max', "NAME")</code></div>
 <div><b>Tables</b>filtered to <code>"NAME" = attribute(@atlas_feature, 'NAME')</code></div>
+<div><b>Main map</b>only the current application, at a scale that fits it</div>
 <div><b>The PDF</b>named from the application's attributes</div>
 </div>
 
 <p class="steps-note">The merged layers are for making maps. Each application is still submitted with its own files.</p>
 
 Note:
-(08:55, the rest of Module 4.) Yesterday's layout works for one application; every new one means re-zooming and checking each label. The atlas takes a coverage layer, the area boundary, and makes one page per feature: the map follows the application, the labels read its attributes directly, and the file is named from them. For several applications we merge them into working layers keyed by NAME, and filter the tables and the tie line to the current one. The merged layers only make the maps: each application still goes in with its own shapefiles, TD and coordinates.
+(08:55, the rest of Module 4.) Yesterday's layout works for one application; every new one means re-zooming and checking each label. The atlas takes a coverage layer, the area boundary, and makes one page per feature: the map follows the application, the labels read its attributes directly, and the file is named from them. For several applications we merge them into working layers keyed by NAME, filter the tables and the tie line to the current one, draw only the current application on the main map, so a neighbour's corners don't appear beside its own, and let its size choose the map's scale. The merged layers only make the maps: each application still goes in with its own shapefiles, TD and coordinates.
 
 ---
 
@@ -2285,17 +2286,17 @@ Note:
 <div>
 <div class="rows">
 <div><b>4.10</b>The atlas, driving yesterday's layout</div>
-<div><b>4.11</b>Both applications, merged and keyed by NAME</div>
-<div><b>4.12</b>Every table and label filtered to the current one</div>
+<div><b>4.11</b>Five applications, merged and keyed by NAME</div>
+<div><b>4.12</b>Each page keyed to its application, at a scale that fits it</div>
 <div><b>4.13</b>One PDF for each application</div>
 </div>
-<div class="callout done"><b>Done when</b> page 2 shows the Luntiang Bundok Agroforestry Association, 20.15 ha.</div>
+<div class="callout done"><b>Done when</b> page 3 shows the Malawak na Kagubatan Agroforestry Cooperative, 255.29 ha, at 1:20,000.</div>
 </div>
 <div class="qr-col"><img class="qr" src="img/qr/workbook-04.svg" alt="QR code for Module 4 of the workbook"><p class="qr-caption"><span class="nw">learn-qgis.bnhr.xyz/</span><wbr><span class="nw">sflma-mapping/</span><wbr><span class="nw">04-maps-and-layouts/</span></p></div>
 </div>
 
 Note:
-Exercises 4.10 to 4.13. Turn on the atlas, merge the second application in, filter, and step through the preview: page 2 is the Luntiang Bundok Agroforestry Association, 20.15 hectares, with its own tables, tie line and title. Export the atlas: two PDFs, one per applicant. 4.12 is the hardest exercise of the course; its finished template is in outputs.
+Exercises 4.10 to 4.13. Turn on the atlas, merge the four prepared applications in, filter, fit, and step through the preview: each page has its own tables, tie line and title; page 1 shows only the sample, not the neighbour that shares its line 4-5; page 3, the Malawak na Kagubatan Agroforestry Cooperative, 255.29 hectares, comes out at 1:20,000; and page 4's tie line sits under its 24 lines. Export the atlas: five PDFs, one per applicant. 4.12 is the hardest exercise of the course; its finished template is in outputs.
 
 ---
 
