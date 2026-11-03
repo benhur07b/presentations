@@ -19,8 +19,10 @@ trainer). It reads three answers, never another repository's files:
 It writes `<first day>-<quiz set>/` (or --folder): `index.md` with the title slide's fields (in `style: 2026/map-sheet`,
 the training decks' style, with the default place: give it the training's own with `place`, the slides skill's list), the contents, a slide with
 each course's workbook and its code, then each day: its section, its agenda (a table per half day, from the trainer's
-schedule), and a slide per quiz round, the pre-test first and the post-test last, each with its timer and QR code, and
-the shared folder's code when the trainer's file gives one; `deck.css`; `img/qr/*.svg`; and a `.gitignore` that keeps
+schedule), and a slide per quiz round, each with its timer and QR code, and the shared folder's code when the trainer's
+file gives one: on the day the trainer's agenda lists the round, in its order, so a pre-test run the day before its
+test's day (a module over two days) is in that day's section; from a trainer that keeps no quiz places, on its test's
+day, the pre-test first and the post-test last; `deck.css`; `img/qr/*.svg`; and a `.gitignore` that keeps
 `index.md` out of git, as every deck here does (the built `index.html` holds the slides). Every link is made by the
 quizzes' own rule, `<quizzes>/<set>/<quiz>/<round>/` (no round for a quiz with one), from the listing's ids: the same
 address the trainer's notebooks and QR codes give. It adds the deck's card to `index.html`, at the top of its year,
@@ -58,7 +60,7 @@ import sys
 import urllib.error
 import urllib.request
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 import segno
@@ -201,13 +203,21 @@ def qr_svg(url: str) -> bytes:
 
 @dataclass(frozen=True)
 class QuizSlide:
-    day: int
+    day: int  # the day the room takes it, in whose section the slide is
     order: int  # its place among the day's quiz slides, from 1
+    of_day: int  # the day the quizzes list it under: its test's day, which a pre-test run the day before isn't
+    quiz: str  # its id on the quizzes site
     round: str  # pre, post, check-in, survey…
     label: str  # how the delivery names the round (Pre-test, Check-in…)
     title: str  # the quiz's title on the quizzes site
     url: str
     light: bool  # it ends with the traffic light
+    single: bool = False  # its quiz has this one round (a check-in, a survey): an agenda names it with round null
+
+    @property
+    def key(self) -> tuple[str, str | None]:
+        """How a trainer's agenda names the round (docs/trainers.md): its quiz's id, and its round, or null for one."""
+        return self.quiz, None if self.single else self.round
 
     @property
     def qr(self) -> str:
@@ -232,8 +242,8 @@ def quiz_url(base: str, quiz_set: str, quiz: dict, round_: str) -> str:
 
 
 def day_quizzes(number: int, day: dict, cohort: dict, base: str) -> list[QuizSlide]:
-    """A day's quiz slides, in the order the room takes them: each test's first round (the pre-test) first, the
-    quizzes with one round (check-ins, surveys) in the listing's order, each test's last round (the post-test) last."""
+    """A day's quiz slides, as the listing has them: each test's first round (the pre-test) first, the quizzes with
+    one round (check-ins, surveys) in the listing's order, each test's last round (the post-test) last."""
     labels = cohort.get("roundLabels", {})
     first, middle, last = [], [], []
     for quiz in day.get("quizzes", []):
@@ -245,9 +255,32 @@ def day_quizzes(number: int, day: dict, cohort: dict, base: str) -> list[QuizSli
             first.append(made[0])
             last.append(made[-1])
             middle += made[1:-1]
-    return [QuizSlide(number, k, r, labels.get(r, r.replace("-", " ").capitalize()), quiz.get("title", quiz["id"]),
-                      quiz_url(base, cohort["courseId"], quiz, r), bool(quiz.get("light")))
+    return [QuizSlide(number, k, number, quiz["id"], r, labels.get(r, r.replace("-", " ").capitalize()), quiz.get("title", quiz["id"]),
+                      quiz_url(base, cohort["courseId"], quiz, r), bool(quiz.get("light")), len(quiz["rounds"]) == 1)
             for k, (r, quiz) in enumerate([*first, *middle, *last], start=1)]
+
+
+def placed(listed: list[list[QuizSlide]], agenda_days: list[dict], notes: list[str]) -> list[list[QuizSlide]]:
+    """Each day's quiz slides where the room takes them, as the trainer's agenda lists each day's quiz rounds in order
+    (docs/trainers.md, `quizzes`): a pre-test run the day before its test's day (a module over two days) goes in that
+    day's section. A day whose trainer keeps no quiz places (`quizzes` null) keeps the listing's; a round the agenda
+    doesn't name stays on its test's day, after the ones it names, with a note."""
+    where: dict[tuple[str, str | None], tuple[int, int]] = {}
+    for n, d in enumerate(agenda_days):
+        for k, r in enumerate(d.get("quizzes") or []):
+            where.setdefault((r["quiz"], r["round"]), (n, k))
+    if not where:
+        return listed
+    days: list[list[tuple[tuple[int, int], QuizSlide]]] = [[] for _ in listed]
+    for n, slides in enumerate(listed):
+        for q in slides:
+            found = where.get(q.key)
+            if found is None:
+                notes.append(f"the trainer's agenda doesn't name day {q.of_day}'s {q.label.lower()} ({q.quiz}): its slide is in "
+                             "its own day's section, after the day's others; move it to where the room takes it")
+            days[found[0] if found else n].append(((0, found[1]) if found else (1, q.order), q))
+    return [[replace(q, day=n, order=k) for k, (_, q) in enumerate(sorted(day, key=lambda item: item[0]), start=1)]
+            for n, day in enumerate(days, start=1)]
 
 
 def halves(rows: list[list[str]]) -> list[tuple[str, list[list[str]]]]:
@@ -308,9 +341,9 @@ def qr_column(number: int | None, what: str, image: str, alt: str, shown: str) -
 def quiz_slide(q: QuizSlide, outputs: bool, hand_in: str) -> str:
     noun = {"pre": "test", "post": "test"}.get(q.round, q.label.lower())
     if q.round == "pre":
-        heading = f"Day {q.day} {q.label.lower()}: nobody expects you to know these *yet*."
+        heading = f"Day {q.of_day} {q.label.lower()}: nobody expects you to know these *yet*."
     elif q.round == "post":
-        heading = f"Day {q.day} {q.label.lower()}: the same questions, *again*."
+        heading = f"Day {q.of_day} {q.label.lower()}: the same questions, *again*."
     else:
         heading = f"{html.escape(q.title)}."
     parts = [f"## {heading}", ""]
@@ -320,7 +353,7 @@ def quiz_slide(q: QuizSlide, outputs: bool, hand_in: str) -> str:
     if q.light:
         parts += ['<div class="lights"><span><span class="dot light-green"></span>On my own data tomorrow</span><span><span class="dot '
                   'light-yellow"></span>With the notes</span><span><span class="dot light-red"></span>Not yet</span></div>', ""]
-    alt = f"QR code for the Day {q.day} {q.label.lower()}" if q.round in ("pre", "post") else f"QR code for {q.title}"
+    alt = f"QR code for the Day {q.of_day} {q.label.lower()}" if q.round in ("pre", "post") else f"QR code for {q.title}"
     columns = [qr_column(1 if outputs else None, f"The {noun}", q.qr, alt, caption(q.url))]
     if outputs:
         columns.append(qr_column(2, "The shared folder", "img/qr/outputs-folder.svg", "QR code for the shared folder", "Your downloaded file goes here"))
@@ -403,14 +436,15 @@ def plan(training_id: str, hub: Path, listing_at: str | None, folder: str | None
             f'<p class="qr-caption">{caption(c["workbook"])}</p></div>', "</div>"]))
     if outputs:
         files["img/qr/outputs-folder.svg"] = qr_svg(outputs)
-    for n, (day, listed) in enumerate(zip(days, cohort["days"]), start=1):
+    rooms = placed([day_quizzes(n, listed, cohort, base) for n, listed in enumerate(cohort["days"], start=1)], agenda["days"], deck.notes)
+    for n, day in enumerate(days, start=1):
         day_title = day_titles[n - 1]
         slides.append("\n".join(['<!-- .slide: class="section-slide" -->', f'<span class="section-label">{day:%A} {day.day} {day:%B}</span>', "",
                                  f"# Day {n}. {html.escape(day_title)}" if day_title else f"# Day {n}."]))
         for half, rows in halves(agenda["days"][n - 1]["schedule"]):
             table = ["| Time | What |", "|:--|:--|", *(f"| {cell(r[0])} | {cell(r[1])} |" for r in rows)]
             slides.append("\n".join([f"## Day {n}, the {half}.", "", *table]))
-        quizzes = day_quizzes(n, listed, cohort, base)
+        quizzes = rooms[n - 1]
         for q in quizzes:
             files[q.qr] = qr_svg(q.url)
             slides.append(quiz_slide(q, bool(outputs), cohort.get("handIn", "assistant")))

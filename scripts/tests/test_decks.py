@@ -129,6 +129,33 @@ def test_every_quiz_link_is_made_by_the_quizzes_rule_and_the_room_takes_them_in_
     ]
 
 
+def test_a_pre_test_run_the_day_before_its_test_s_day_is_in_that_day_s_section_as_the_trainer_s_agenda_lists_it(repo: Path) -> None:
+    """Module 4 runs over both days: day 2's test draws on it, so its pre round comes where module 4 starts, on day 1,
+    after day 1's post-test; the trainer's agenda lists each day's rounds in the room's order (docs/trainers.md)."""
+    two_tests = listing()
+    two_tests["cohorts"][0]["days"][1]["quizzes"].insert(0, quiz("day2-test", "test", "Day 2: Functions"))
+    (repo.parent / "cohorts.json").write_text(json.dumps(two_tests), encoding="utf-8")
+    found = answer()
+    days = found["agenda"]["days"]
+    days[0]["quizzes"] = [{"quiz": "day1-test", "round": "pre"}, {"quiz": "values-and-names", "round": None},
+                          {"quiz": "collections", "round": None}, {"quiz": "day1-test", "round": "post"}, {"quiz": "day2-test", "round": "pre"}]
+    days[1]["quizzes"] = [{"quiz": "functions", "round": None}, {"quiz": "day2-test", "round": "post"}]
+    deck = plan(repo, Hub(found))
+    assert [(q.day, q.of_day, q.quiz, q.round) for q in deck.quizzes] == [
+        (1, 1, "day1-test", "pre"), (1, 1, "values-and-names", "check-in"), (1, 1, "collections", "check-in"),
+        (1, 1, "day1-test", "post"), (1, 2, "day2-test", "pre"),
+        (2, 2, "functions", "check-in"), (2, 2, "day2-test", "post"), (2, 2, "feedback", "survey")]
+    md = deck.files["index.md"].decode()
+    day1, day2 = md.split("# Day 2.")
+    assert "## Day 2 pre-test: nobody expects you to know these *yet*." in day1 and "pre-test" not in day2.lower().split("post-test")[0]
+    assert day1.index("## Day 1 post-test") < day1.index("## Day 2 pre-test"), "after day 1's post-test, where module 4 starts"
+    assert deck.notes == ["the trainer's agenda doesn't name day 2's feedback (feedback): its slide is in its own day's section, after the "
+                          "day's others; move it to where the room takes it"]
+    assert "img/qr/day1-5-pre-test.svg" in deck.files and "img/qr/day2-1-check-in.svg" in deck.files
+    found["agenda"]["days"] = [{**d, "quizzes": None} for d in days]  # a trainer that keeps no quiz places: the listing's days
+    assert [(q.day, q.quiz, q.round) for q in plan(repo, Hub(found)).quizzes if q.quiz == "day2-test"] == [(2, "day2-test", "pre"), (2, "day2-test", "post")]
+
+
 def test_every_qr_code_decodes_to_the_address_its_caption_shows_as_the_link_check_reads_them(repo: Path) -> None:
     deck = plan(repo)
     decks.apply(deck, repo)
