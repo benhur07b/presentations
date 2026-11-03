@@ -298,3 +298,17 @@ def test_dates_text(days: list[str], text: str) -> None:
 def test_a_caption_reads_back_as_its_address(url: str) -> None:
     page = check_links.read_page(f'<img class="qr" src="x.svg"><p class="qr-caption"><b>1 · The test</b>{decks.caption(url)}</p>')
     assert check_links.bare(check_links.caption_address(page.qrs[0]["caption"])) == check_links.bare(url)
+
+
+def test_the_link_check_refuses_a_deck_named_with_no_built_page(tmp_path: Path, monkeypatch, capsys) -> None:
+    """A deck new-deck started, its index.md written and its index.html not built yet, was checked as "0 pages" and
+    passed; a deck of PDFs only passes nothing without --pdfs either."""
+    monkeypatch.setattr(check_links, "ROOT", tmp_path)
+    (tmp_path / "2027-02-02-python-essentials").mkdir()
+    (tmp_path / "2027-02-02-python-essentials" / "index.md").write_text("---\nstyle: 2026/map-sheet\n---\n", encoding="utf-8")
+    (tmp_path / "2022-06-a-pdf-deck").mkdir()
+    (tmp_path / "2022-06-a-pdf-deck" / "deck.pdf").write_bytes(b"%PDF-1.4\n")
+    assert check_links.main(["2027-02-02-python-essentials", "2022-06-a-pdf-deck"]) == 1
+    err = capsys.readouterr().err
+    assert "2027-02-02-python-essentials/ has no built page to check: build index.html from index.md first" in err
+    assert "2022-06-a-pdf-deck/ has no built page to check: add --pdfs for its PDF deck" in err

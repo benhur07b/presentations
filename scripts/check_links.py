@@ -15,7 +15,8 @@ For each deck (a folder with HTML pages, the slides of a reveal.js deck included
   then asks which training
 - with --pdfs, the links inside the PDF decks too
 
-Read-only: it changes nothing. Exit 0 when every link holds, 1 when any does not, 2 on a usage error. Sites that turn
+Read-only: it changes nothing. Exit 0 when every link holds, 1 when any does not, or a deck named has nothing to check
+(no built page: index.md written, index.html not built yet; or PDFs only, without --pdfs), 2 on a usage error. Sites that turn
 scripts away (403, 429, 999, Cloudflare's 52x) cannot be checked from here: they are listed as notes, to open by hand.
 
     uv run scripts/check_links.py                          # every deck and the index page
@@ -267,16 +268,22 @@ def report(links: list[Link], checked: int) -> int:
     return 1 if problems else 0
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0], epilog="Exit 0: every link holds; 1: a problem; 2: a usage error.")
     parser.add_argument("decks", nargs="*", help="deck folders to check (default: every deck and the index page)")
     parser.add_argument("--pdfs", action="store_true", help="check the links inside the PDF decks too")
     parser.add_argument("--json", type=Path, metavar="PATH", help="also write every link checked, with its finding, as JSON")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     folders = [ROOT / d.rstrip("/") for d in args.decks] or sorted(p for p in ROOT.iterdir() if p.is_dir() and not p.name.startswith(".") and p.name not in {"assets", "scripts"})
     missing = [f.name for f in folders if not f.is_dir()]
     if missing:
         parser.error(f"no deck folder {', '.join(missing)} in {ROOT}")
+    # A deck named to be checked before it is shown, with nothing in it to check, is not a deck whose links hold
+    if args.decks and (empty := [f for f in folders if not any(f.glob("*.html")) and not (args.pdfs and any(f.glob("*.pdf")))]):
+        for f in empty:
+            hint = "add --pdfs for its PDF deck" if any(f.glob("*.pdf")) else "build index.html from index.md first (the slides skill)"
+            print(f"{f.name}/ has no built page to check: {hint}", file=sys.stderr)
+        return 1
     pages = ([] if args.decks else [ROOT / "index.html"]) + [p for f in folders for p in sorted(f.glob("*.html"))]
     pdfs = [p for f in folders for p in sorted(f.glob("*.pdf"))] if args.pdfs else []
     print(f"Checking {len(pages)} pages{f' and {len(pdfs)} PDFs' if pdfs else ''} in {len(folders)} folders…", file=sys.stderr)
