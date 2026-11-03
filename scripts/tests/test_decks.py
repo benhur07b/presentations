@@ -111,7 +111,7 @@ def test_a_deck_is_planned_from_the_record_and_the_listing_and_written_only_with
     assert sorted(p.relative_to(repo / deck.folder).as_posix() for p in (repo / deck.folder).rglob("*") if p.is_file()) == sorted(deck.files)
     assert (repo / deck.folder / ".gitignore").read_text() == "index.md\n"  # as every deck here keeps its source out of git
     md = (repo / deck.folder / "index.md").read_text(encoding="utf-8")
-    assert md.startswith("---\nstyle: 2026\ntitle: 'Python Essentials for ACME'\n")
+    assert md.startswith("---\nstyle: 2026/map-sheet\ntitle: 'Python Essentials for ACME'\n"), "the training decks' style"
     assert "subtitle: 'Python Essentials<br>2 and 3 February 2027<br>ACME'" in md
     assert "  url: 'https://bnhr.xyz/presentations/2027-02-02-python-essentials/'" in md
 
