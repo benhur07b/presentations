@@ -86,6 +86,22 @@ Four more from the page. Which of eight Philippine cities has the most grid-like
 
 ---
 
+## A *whole lot* of maps.
+
+<div class="posts">
+<figure><img src="img/about/post-points-of-authority.jpg" alt="Points of Authority: Manila's government buildings and places of worship from OpenStreetMap, with Malacañang Palace and Manila Cathedral circled"><figcaption>Points of authority</figcaption></figure>
+<figure><img src="img/about/post-points-of-authority-side-b.jpg" alt="Points of Authority, Side B: 21,165 government buildings and 18,355 places of worship across the Philippines, and 2.3 km from Malacañang to Manila Cathedral"><figcaption>Side B</figcaption></figure>
+<figure><img src="img/about/post-broken-dreams.jpg" alt="Boulevard of Broken Dreams: 33.0 km of road with no turnoff, exit or junction, from OpenStreetMap"><figcaption>Boulevard of broken dreams</figcaption></figure>
+<figure><img src="img/about/post-below-the-line.jpg" alt="17.5M below the line: each province's share of people below the poverty line in 2023, from 1 in 3 in BARMM to 1 in 56 in NCR"><figcaption>Below the poverty line</figcaption></figure>
+</div>
+
+<p class="steps-note">And from this year's #30DayMapChallenge. Can you guess the themes and what inspired them?</p>
+
+Note:
+And four from this month's #30DayMapChallenge, a map a day through November. Day 1, points: Manila's government buildings and places of worship from OpenStreetMap, then side B, the whole country: 21,165 government buildings, 18,355 places of worship, and 2.3 km from Malacañang to Manila Cathedral. Day 2, lines: 33 km of road with no turnoff, exit or junction. Day 3, polygons: PSA's 2023 poverty statistics by province, 17.5 million Filipinos below the line, 1 in 3 in BARMM and 1 in 56 in NCR. Every one is open data and free software.
+
+---
+
 <!-- .slide: class="toc-slide" -->
 
 ## Contents
