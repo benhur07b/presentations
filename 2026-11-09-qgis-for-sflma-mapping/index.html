@@ -2219,7 +2219,10 @@ Note:
 ## Read every value from the layer; never *type* it.
 
 ```text
-[% 'Area = ' || aggregate('area_boundary', 'max', "AREA") || ' hectares' %]
+[% 'Area = ' || format_number(
+     aggregate('area_boundary', 'max', "AREA"),
+     4, omit_group_separators:=true)
+   || ' hectares' %]
 ```
 
 <div class="rows">
