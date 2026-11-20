@@ -1466,15 +1466,12 @@ This is the game behind everything the hall has done today: Ma'am Liza's PIN, th
 
 ## Come to our *booth*.
 
-<div class="steps" style="--n: 3">
+<div class="steps" style="--n: 2">
 <div class="step"><div class="ico"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="12" height="12" x="2" y="10" rx="2" ry="2" /> <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" /> <path d="M6 18h.01" /> <path d="M10 14h.01" /> <path d="M15 6h.01" /> <path d="M18 9h.01" /> </svg></div><div class="n">All ages</div><div class="name">Play BUDOL</div>
 <div class="more-in"><div class="what">The card game: play the tester or the target in ten minutes, and help Ma'am Liza.</div></div>
 </div>
 <div class="step ours"><div class="ico"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /> </svg></div><div class="n">Ask us</div><div class="name">Your questions</div>
 <div class="more-in"><div class="what">About anything from today: a message you're unsure of, a setting, an app.</div></div>
-</div>
-<div class="step"><div class="ico"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z" /> <path d="M12 17v4" /> <path d="M8 21h8" /> <rect x="2" y="3" width="20" height="14" rx="2" /> </svg></div><div class="n">Watch and try</div><div class="name">Live scam demos</div>
-<div class="more-in"><div class="what">See how scams are made and delivered, on our own devices.</div></div>
 </div>
 </div>
 
