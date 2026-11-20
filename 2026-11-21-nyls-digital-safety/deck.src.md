@@ -1415,7 +1415,7 @@ This is the game behind everything the hall has done today: Ma'am Liza's PIN, th
 
 ## Come to our *booth*.
 
-<div class="steps" style="--n: 3">
+<div class="steps" style="--n: 2">
 <div class="step"><div class="ico">{{i:dices}}</div><div class="n">All ages</div><div class="name">Play BUDOL</div>
 <!-- more -->
 <div class="what">The card game: play the tester or the target in ten minutes, and help Ma'am Liza.</div>
@@ -1424,11 +1424,6 @@ This is the game behind everything the hall has done today: Ma'am Liza's PIN, th
 <div class="step ours"><div class="ico">{{i:shield-check}}</div><div class="n">Ask us</div><div class="name">Your questions</div>
 <!-- more -->
 <div class="what">About anything from today: a message you're unsure of, a setting, an app.</div>
-<!-- /more -->
-</div>
-<div class="step"><div class="ico">{{i:monitor-play}}</div><div class="n">Watch and try</div><div class="name">Live scam demos</div>
-<!-- more -->
-<div class="what">See how scams are made and delivered, on our own devices.</div>
 <!-- /more -->
 </div>
 </div>
