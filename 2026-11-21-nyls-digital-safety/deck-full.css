@@ -1,0 +1,19 @@
+/* The full version only (make.py links this after deck.css). Every block keeps the stage version's size; only the
+   extra text the stage version moves to the speaker notes is added, set smaller: under a block (.more) or inside a
+   card (.more-in). The text under a block stops short of the logo's column, so it can run down to the footer line. */
+.reveal .slides section .more { margin-top: 12px; max-width: 1540px; }
+.reveal .slides section .more p,
+.reveal .slides section .more li { font-size: 18pt; line-height: 1.25; color: var(--muted); margin: 0 0 4px; }
+.reveal .slides section .more-in .what { font-size: 19pt; line-height: 1.25; margin-top: 10px; }
+/* With text under it, a slide's one-line note sits a little closer to its block */
+.reveal .slides section p.steps-note { margin-top: 28px; }
+/* The extra text in the brand's lightest text colour, so it reads as a side note to the slide */
+.reveal .slides section .more p,
+.reveal .slides section .more li,
+.reveal .slides section .more-in .what { color: var(--subtle); font-weight: 400; }
+/* The switch table's rows stay close in the full version, so its note fits above the footer */
+.reveal .slides section table.switch td { padding-top: 4px; padding-bottom: 4px; }
+/* Block the ads: the screenshots a little shorter, so the note fits under them */
+.reveal .slides section .ad-shot img, .reveal .slides section .ad-shot.wide img { height: 250px; }
+/* Browsers and search: shorter screenshots, so the note fits under the cards */
+.pics4 .pic .art { height: 250px; }
