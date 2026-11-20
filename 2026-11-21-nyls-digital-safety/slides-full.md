@@ -29,9 +29,6 @@ favicon: img/favicon.svg
 </div>
 </div>
 
-Note:
-Ask each question and wait for hands. Then: "Look around: you're not alone, and nobody here is stupid." Scammers do this for a living. That's the message for anyone in the hall who's been caught.
-
 ---
 
 <link rel="stylesheet" href="deck.css">
@@ -56,9 +53,6 @@ Ask each question and wait for hands. Then: "Look around: you're not alone, and 
 <div class="qr-col"><img class="qr" src="img/about/qr.png" alt="QR code for facebook.com/bnhr.xyz"><p class="qr-caption">facebook.com/<wbr><span class="nw">bnhr.xyz</span></p></div>
 </div>
 
-Note:
-Not a cybersecurity expert: someone who practises and teaches personal security and privacy. Today is about you and your family. Keep it short, but land the daily drivers: everything I'll recommend today, I use every day. That's the proof that switching is livable. Why Clippy: a paper clip that helps, and a reminder that tech should work for its users.
-
 ---
 
 ## I use what I'll *show* you.
@@ -77,9 +71,6 @@ Not a cybersecurity expert: someone who practises and teaches personal security 
 </div></div><figcaption>GrapheneOS, every day</figcaption></figure>
 </div>
 
-Note:
-Proof that this is livable: these are my own posts about my own machines, and they're years old. An old phone or tablet with an open-source system gets updates again, and stays out of the landfill. GrapheneOS is on my daily phone. The third picture is a drawing of a home screen with the apps from today; swap in a real screenshot (yours, with notifications and anything personal cleared, or a freely licensed one) when we have it.
-
 ---
 
 ## You're your family's *tech support*.
@@ -93,9 +84,6 @@ Proof that this is livable: these are my own posts about my own machines, and th
 
 <p class="steps-note">You set them up. You can protect them, too.</p>
 
-Note:
-Ask: "Who here set up a parent's or grandparent's phone?" This is the summit's theme: young people leading on online safety, starting at home.
-
 ---
 
 ## Spot it. Stop it. *Switch* it.
@@ -108,9 +96,6 @@ Ask: "Who here set up a parent's or grandparent's phone?" This is the summit's t
 <div class="step ours"><div class="ico"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m16 3 4 4-4 4" /> <path d="M20 7H4" /> <path d="m8 21-4-4 4-4" /> <path d="M4 17h16" /> </svg></div><div class="n">Part 5</div><div class="name">Switch it</div><div class="what">Tools that work for you</div></div>
 <div class="step"><div class="ico"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /> </svg></div><div class="n">Part 6</div><div class="name">What's next</div><div class="what">Protect one person, then more</div></div>
 </div>
-
-Note:
-Thirty seconds: this is where we're going. How scams get in, then spot it, stop it, what to do when it happens, switch it, and what's next. A bonus part after Part 5 is for those who want to go further; skip it if time is short.
 
 ---
 
@@ -130,9 +115,6 @@ Thirty seconds: this is where we're going. How scams get in, then spot it, stop 
 </div>
 
 <p class="steps-note">It's called social engineering. Almost every scam follows these three steps.</p>
-
-Note:
-One frame for every scam that follows. It's also how the Threat actor plays in BUDOL, our card game at the booth.
 
 ---
 
@@ -155,9 +137,6 @@ One frame for every scam that follows. It's also how the Threat actor plays in B
 </div>
 </div>
 
-Note:
-Ma'am Liza is made up: she's a persona from our card game. Read each post and ask for hands: "Who thinks it's this one?" Then reveal all four. A birthday, a year or a number you post is a PIN a stranger can guess.
-
 ---
 
 ## That quiz is collecting your *answers*.
@@ -178,9 +157,6 @@ Ma'am Liza is made up: she's a persona from our card game. Read each post and as
 </div>
 </div>
 
-Note:
-Ask who has answered a quiz like this. No shame: they're made to be fun. The page name is made up.
-
 ---
 
 ## Privacy isn't *secrecy*.
@@ -194,9 +170,6 @@ Ask who has answered a quiz like this. No shame: they're made to be fun. The pag
 "I have nothing to hide" misses the point. Privacy is a right, and it still applies online. Everything you share can be used, by advertisers and by scammers.
 
 </div>
-
-Note:
-This answers "I have nothing to hide" before we look at what scammers do with what we share.
 
 ---
 
@@ -217,9 +190,6 @@ We measured it: 72 messages, a median of 0.9 seconds each, written for a made-up
 
 </div>
 
-Note:
-Measured on our event PC on 6 November 2026 (gemma3:12b, after loading). The old advice to look for typos is dead. And it isn't only text: a voice can be copied from a short recording of someone talking. Hold that thought; a family code word beats it.
-
 ---
 
 ## Step 3: they want you to act before you *think*.
@@ -231,9 +201,6 @@ Measured on our event PC on 6 November 2026 (gemma3:12b, after loading). The old
 </div>
 
 <p class="steps-note">They don't need you to believe them. They need you not to stop and check.</p>
-
-Note:
-Three of the nine warning signs we'll practise soon. Next, their toolbox. Short on time? Press G, type 18 ("Nine warning signs"), and Enter to skip it.
 
 ---
 
@@ -261,9 +228,6 @@ Most of these are sold ready to use. Scammers don't need to be experts: they buy
 
 </div>
 
-Note:
-How scams are done, at the level of what you'd see. No instructions, no tool names. The point: these are cheap and common, so the defences are what matter. Rented accounts are where young people get pulled in.
-
 ---
 
 ## An SMS blaster is a fake tower in a *car*.
@@ -281,9 +245,6 @@ How scams are done, at the level of what you'd see. No instructions, no tool nam
 The text can even land in your bank's real message thread. A link in a text is suspect, whoever it seems to come from.
 
 </div>
-
-Note:
-Metro Manila police have caught people driving around with these. EFF's Rayhunter can detect fake towers like these (see the bonus part). Check the latest reports and the exact menu path the week of the event: the 2G switch is on many Android phones (Android 12 and later), not all; on iPhone, only Lockdown Mode turns 2G off.
 
 ---
 
@@ -304,9 +265,6 @@ Sender names and caller IDs can be faked. Only the app you installed and the num
 </div>
 </div>
 
-Note:
-The first message is real, the second is not, and both sit under the same name. "YOUR BANK" stands in for any bank: no real brand on our slides.
-
 ---
 
 <!-- .slide: class="section-slide" -->
@@ -319,9 +277,6 @@ The first message is real, the second is not, and both sit under the same name. 
 ## Nine signs give a scam *away*.
 
 <div class="signs9"><span class="sign s-rush"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <polyline points="12 6 12 12 16 14" /> </svg><span>Rush<small>Minamadali ka</small></span></span><span class="sign s-code"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /> </svg><span>Asks for a code<small>Humihingi ng code</small></span></span><span class="sign s-link"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /> <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /> </svg><span>Link or QR<small>May link o QR</small></span></span><span class="sign s-impostor"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2 12a5 5 0 0 0 5 5 8 8 0 0 1 5 2 8 8 0 0 1 5-2 5 5 0 0 0 5-5V7h-5a8 8 0 0 0-5 2 8 8 0 0 0-5-2H2Z" /> <path d="M6 11c1.5 0 3 .5 3 2-2 0-3 0-3-2Z" /> <path d="M18 11c-1.5 0-3 .5-3 2 2 0 3 0 3-2Z" /> </svg><span>Impostor<small>Nagpapanggap</small></span></span><span class="sign s-pay"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 11H4" /> <path d="M20 7H4" /> <path d="M7 21V4a1 1 0 0 1 1-1h4a1 1 0 0 1 0 12H7" /> </svg><span>Pay first<small>Magbayad muna</small></span></span><span class="sign s-secret"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /> <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /> <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /> <path d="m2 2 20 20" /> </svg><span>Keep it secret<small>Ilihim daw</small></span></span><span class="sign s-data"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 10h2" /> <path d="M16 14h2" /> <path d="M6.17 15a3 3 0 0 1 5.66 0" /> <circle cx="9" cy="11" r="2" /> <rect x="2" y="5" width="20" height="14" rx="2" /> </svg><span>Asks for personal info<small>Humihingi ng personal na info</small></span></span><span class="sign s-shock"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /> </svg><span>Shock: share now<small>Nakakagulat, i-share agad</small></span></span><span class="sign s-easy"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="8" cy="8" r="6" /> <path d="M18.09 10.37A6 6 0 1 1 10.34 18" /> <path d="M7 6h1v4" /> <path d="m16.71 13.88.7.71-2.82 2.82" /> </svg><span>Easy money<small>Madaling pera</small></span></span></div>
-
-Note:
-Read them out, English then Filipino. They're the same signs as in BUDOL at the booth.
 
 ---
 
@@ -342,9 +297,6 @@ A new number, an emergency, and "don't tell Papa": three signs in one message.
 </div>
 </div>
 
-Note:
-Aimed at parents. Let the hall shout, then reveal the signs one by one.
-
 ---
 
 ## Shout the *sign*!
@@ -363,9 +315,6 @@ The "renter" moves stolen money through your account. That makes you a money mul
 <div class="phone"><div class="scr"><div class="bar"><span class="av">?</span>Unknown</div><div class="msgs"><div class="msg">Pa-rent ng e-wallet account mo, P1,000 a week! Ibibigay mo lang ang OTP. Easy!</div></div></div></div>
 </div>
 </div>
-
-Note:
-Aimed at students. Legal review pending for the money-mule line. Say it plainly, without scaring: "You'd be the one the police find."
 
 ---
 
@@ -386,9 +335,6 @@ The page asks for your game login. Once they have it, they take the account and 
 </div>
 </div>
 
-Note:
-Aimed at students and gamers. The page name and link are made up, and no real game is named. Ask: "Who's seen one of these in a game chat or a comment?"
-
 ---
 
 ## Shout the *sign*!
@@ -407,9 +353,6 @@ Fake news is a scam on your attention. It spreads because we share before we che
 <div class="phone"><div class="scr"><div class="bar"><span class="av"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14 22v-4a2 2 0 1 0-4 0v4" /> <path d="m18 10 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.382a1 1 0 0 1 .553-.894L6 10" /> <path d="M18 5v17" /> <path d="m4 6 7.106-3.553a2 2 0 0 1 1.788 0L20 6" /> <path d="M6 5v17" /> <circle cx="12" cy="9" r="2" /> </svg></span>Pasig Schools Update</div><div class="post">🚨 BREAKING: Classes suspended tomorrow in all levels! Share to your GCs!<div class="meta">a post with a copied school logo</div></div></div></div>
 </div>
 </div>
-
-Note:
-Aimed at everyone. The page name is made up. Ask: "Where would you check?" The school's or the city's official page.
 
 ---
 
@@ -430,9 +373,6 @@ Apps that read your contacts can shame you to everyone you know when you're late
 </div>
 </div>
 
-Note:
-Aimed at parents and teachers. For the parents and teachers in the hall.
-
 ---
 
 ## Shout the *sign*!
@@ -452,9 +392,6 @@ It asks for your students' birthdays and addresses: minors' data, which a real o
 </div>
 </div>
 
-Note:
-Aimed at teachers. For the teachers in the hall. The sender is made up.
-
 ---
 
 ## Spot *one* sign. That's enough.
@@ -467,9 +404,6 @@ Aimed at teachers. For the teachers in the hall. The sender is made up.
 </div>
 
 <p class="steps-note">Most scams show two or three. You only need to catch one to stop and check.</p>
-
-Note:
-
 
 ---
 
@@ -490,9 +424,6 @@ Note:
 
 <p class="steps-note">There's no fully protected. There's better protected.</p>
 
-Note:
-Each step costs a little convenience. Take the next one, not all of them.
-
 ---
 
 ## Guard three *keys*.
@@ -510,9 +441,6 @@ Each step costs a little convenience. Take the next one, not all of them.
 </div>
 
 <p class="steps-note">What do you protect, and from whom? For most of us: these three, from scammers.</p>
-
-Note:
-This is threat modelling cut to its core.
 
 ---
 
@@ -535,9 +463,6 @@ This is threat modelling cut to its core.
 
 <p class="steps-note">Remember Ma'am Liza.</p>
 
-Note:
-"Fake answers": your first pet can be "Purple Rocket 42". Keep it in your password manager, which we'll get to.
-
 ---
 
 ## Your codes are *yours* alone.
@@ -552,9 +477,6 @@ Note:
 </div>
 </div>
 
-Note:
-The OTP is the last lock. Whoever asks for it is the thief, whatever name they give.
-
 ---
 
 ## Pause, then *check*.
@@ -566,9 +488,6 @@ The OTP is the last lock. Whoever asks for it is the thief, whatever name they g
 </div>
 
 <p class="steps-note">Agree it tonight, face to face. A cloned voice can't answer it.</p>
-
-Note:
-AI can copy a voice from a short recording. A code word agreed in person beats it.
 
 ---
 
@@ -586,9 +505,6 @@ AI can copy a voice from a short recording. A code word agreed in person beats i
 </div>
 </div>
 
-Note:
-The habits behind three of the shouts: the investment, the loan app and the account for rent. Legal review pending for the money-mule and SEC lines.
-
 ---
 
 ## Angry or scared? *Check* before you share.
@@ -602,9 +518,6 @@ The habits behind three of the shouts: the investment, the loan app and the acco
 Look for the original source: the school's, the city's or the agency's own page. If it isn't there, don't pass it on.
 
 </div>
-
-Note:
-Fake news spreads through people who care. Caring includes checking.
 
 ---
 
@@ -634,9 +547,6 @@ Turn off what an app doesn't need, delete apps you don't use, and never install 
 
 </div>
 
-Note:
-Loan apps that read contacts are the worst case.
-
 ---
 
 ## Two minutes, on your *phone*.
@@ -651,10 +561,6 @@ Loan apps that read contacts are the worst case.
 <p class="steps-note">Pick one and do it now. Changing a PIN? Cover your screen.</p>
 
 <bnhr-timer minutes="2"></bnhr-timer>
-
-Note:
-Three are in your phone's settings and work without mobile data; installing Signal needs a signal or Wi-Fi in the court. A password manager can wait until you're home on Wi-Fi.
-Press T to start the timer. Walk the hall; ask a few people what they picked.
 
 ---
 
@@ -678,9 +584,6 @@ Press T to start the timer. Walk the hall; ask a few people what they picked.
 
 <p class="steps-note">Scammers do this for a living. Being caught isn't stupidity.</p>
 
-Note:
-Shame is what keeps people from reporting. Say it plainly.
-
 ---
 
 ## Report it *here*.
@@ -694,9 +597,6 @@ Shame is what keeps people from reporting. Say it plainly.
 
 <p class="steps-note"><svg class="ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" /> <circle cx="12" cy="13" r="3" /> </svg> Take a photo of this slide.</p>
 
-Note:
-Call your bank or e-wallet first: it can freeze the money. Then 1326, the government's Inter-Agency Response Center run by the CICC, for any online scam, any time. Sources, checked 17 November 2026: 1326 from the Philippine News Agency (pna.gov.ph/articles/1207775) and ABS-CBN (Nov 2024); PNP-ACG mobile from the PNP telephone directory (May 2025) and PNA (2026), which also gives (02) 8414-1560 and acg@pnp.gov.ph; NBI hotline and ccd@nbi.gov.ph from nbi.gov.ph. The eGov app's eReport (pick "Scam", attach screenshots) is from PNA (pna.gov.ph/articles/1228318). A CICC email, report@cicc.gov.ph, appears only on a law-firm blog, not on an official page, so it's left off the slide until someone confirms it with the CICC. Call each number once the week of the event to confirm it still answers.
-
 ---
 
 ## When the threat is someone you *know*.
@@ -709,9 +609,6 @@ Call your bank or e-wallet first: it can freeze the money. Then 1326, the govern
 </div>
 
 <p class="steps-note">If you feel watched, tell an adult you trust.</p>
-
-Note:
-Stalkerware and shared passwords are common in relationships, including young ones. Keep it practical and kind.
 
 ---
 
@@ -730,9 +627,6 @@ Stalkerware and shared passwords are common in relationships, including young on
 This includes someone threatening to share your photos. Whatever happened, it's not your fault, and adults can help.
 
 </div>
-
-Note:
-Say it calmly and move on. The word sextortion isn't on the slide; the line above covers it gently. Not on the slide, because minors are in the hall; say it only one to one, if someone asks: "Keep the chat" means the messages and the account names. Leave any such photo where it is and let the police or the platform take it from there, because keeping or sending a sexual image of a minor can be a crime even when it's meant as proof (RA 11930, the Anti-OSAEC and Anti-CSAEM Act). Legal review pending for this line, including how it applies to a minor's own photo.
 
 ---
 
@@ -759,9 +653,6 @@ What they collect gets sold or leaked, and ends up on scammers' lists. Open-sour
 
 </div>
 
-Note:
-The same bait, switch and squeeze as in my open-source and local-first talk. Paying no longer opts you out: paid apps and services sell and share data too. That's why we switch to tools that are built to collect less.
-
 ---
 
 ## There's a word for it: *enshittification*.
@@ -773,9 +664,6 @@ The same bait, switch and squeeze as in my open-source and local-first talk. Pay
 </div>
 
 <p class="steps-note">Coined by writer Cory Doctorow, 2022.</p>
-
-Note:
-A rude word for a real pattern, and dictionaries have picked it up. Say it once, smile, then move on: the way out is tools built to collect less.
 
 ---
 
@@ -802,10 +690,6 @@ A rude word for a real pattern, and dictionaries have picked it up. Say it once,
 Free to start, except Mullvad and security keys. KeePassXC and LibreWolf: computers only. F-Droid and Aegis: Android only.
 
 </div>
-
-Note:
-The answer to enshittification: tools built to collect less, most of them free, and quick to switch to. The times are our estimates: time each switch on our test phone before the event and correct them.
-The rest also run on iPhone. Most bring your old stuff along: passwords, bookmarks, even your email. VPN/DNS: many free VPN apps make their money from your data, so pick one you can check. Proton VPN has a free plan; Mullvad is paid (about €5 a month) and needs no email to sign up. Quad9 is a free DNS service that blocks known scam and malware sites; set it as Private DNS (dns.quad9.net) in Android's network settings. A VPN hides your browsing from your network, not from the sites you log in to. Check each tool's price, free-plan limits and minimum age the week of the event.
 
 ---
 
@@ -834,9 +718,6 @@ The rest also run on iPhone. Most bring your old stuff along: passwords, bookmar
 Aurora Store gets apps from Google Play without a Google account. microG stands in for Google's background services, on phones set up for it, like /e/OS.
 
 </div>
-
-Note:
-The screenshot is our own, of F-Droid 2's Discover screen (2.0 came out in September 2026). A dark-mode copy is in img/tools/fdroid2-drk.png. The QR opens f-droid.org. Android only; there's no F-Droid for iPhone. Installing it means downloading its app file from f-droid.org and allowing your browser to install it once: say clearly that this app file is trusted because it comes from the official site, unlike one sent in a chat. Every app's code is public, and F-Droid builds most apps from it itself. Aurora Store is an open-source front end to Google Play, on F-Droid: its anonymous login means no Google account, though downloads still come from Google's servers, and signing in with your own Google account there can put that account at risk. microG is an open-source stand-in for Google Play Services, which many apps need; it isn't an app store, and it needs a system built for it (/e/OS, LineageOS for microG), so it belongs with Level 3. GrapheneOS takes a different route, sandboxed Google Play. Apps with ads, tracking or paid parts carry a warning label (F-Droid calls them Anti-Features). Check the install steps on a current Android phone the week of the event.
 
 ---
 
@@ -871,9 +752,6 @@ When courts ordered Signal to hand over a user's data, those two dates were all 
 
 </div>
 
-Note:
-Signal publishes the court orders it receives and its answers at signal.org/bigbrother: each time, the only data it had was the date an account was made and the date it last connected. Be fair to the others: Messenger, WhatsApp and Viber lock chats by default now too (Telegram only in "secret chats"), so the reason to switch is how little Signal collects and keeps, not the lock alone. Stickers, groups, voice and video calls work as you'd expect. Signal can't read profiles either: names and photos are encrypted too. The QR opens Signal's download page, which links to the official app stores. Check signal.org/bigbrother and each app's current default the week of the event.
-
 ---
 
 ## *Block the ads* and the scam ads go too.
@@ -902,9 +780,6 @@ Signal publishes the court orders it receives and its answers at signal.org/bigb
 Scam ads and fake download buttons go with the ordinary ads. Pi-hole covers phones and TVs too.
 
 </div>
-
-Note:
-The screenshot is from uBlock Origin's own README: one news page, 23 requests blocked. uBlock Origin runs fully in Firefox and its relatives; Chrome now allows only the lighter uBlock Origin Lite. Pi-hole is the DIY option for a household: a Raspberry Pi that blocks ads on every device on the network. The Pi-hole screenshot is Pi-hole's own (version 6 dashboard, github.com/pi-hole/graphics, MIT), cropped to its counters and the 24-hour chart. Check both the week of the event.
 
 ---
 
@@ -942,9 +817,6 @@ The screenshot is from uBlock Origin's own README: one news page, 23 requests bl
 They replace Chrome. Firefox brings your bookmarks and passwords across.
 
 </div>
-
-Note:
-A browser that doesn't profile you has less to sell and less to leak. The four windows are drawings, not screenshots: each shows what sets that browser apart. Firefox, Brave and Vivaldi work on phones too; LibreWolf is for computers. Brave has its own optional ads and crypto wallet: say it can be switched off. Check each browser's current features the week of the event.
 
 ---
 
@@ -985,9 +857,6 @@ They replace Google Search. Make one your browser's default search engine.
 
 </div>
 
-Note:
-A search engine that doesn't profile you has less to sell. Screenshots, cropped: DuckDuckGo (Wikimedia Commons, CC BY 4.0, DuckDuckGo, June 2026); Startpage (Commons, public domain, Startpage.com, 2025); Brave Search (Commons, public domain, Brave Software, 2025); Qwant's home page, our own. All four work in any browser, on phones and computers. Brave Search runs its own index rather than renting Google's or Bing's. Qwant is a French search engine that says it doesn't profile its users; check its current privacy terms the week of the event.
-
 ---
 
 ## *Passwords*: remember one, it keeps the rest.
@@ -1012,9 +881,6 @@ Saving passwords in your browser? Better than reusing one. A dedicated manager w
 </div>
 </div>
 </div>
-
-Note:
-You remember one strong password; it makes and keeps a different one for every site, and checks the address, so a fake page gets nothing. KeePassXC is for computers and KeePassDX for Android; Bitwarden runs on both, and on iPhone. The example addresses are made up. Shared computers: a pisonet or computer-shop PC, a library machine, a classmate's laptop. Don't say "avoid your browser's password manager": it's far better than reusing one password, and it also fills in only on the real site. The dedicated manager's edge: it works across browsers and devices, it isn't tied to one company's account, and password-stealing malware goes after browser-saved passwords first. Protect the vault: a strong main password used nowhere else, 2FA on it, and the recovery kit saved somewhere safe.
 
 ---
 
@@ -1042,9 +908,6 @@ A scammer who talks your telco into a new SIM gets your texts, not your app. Whe
 
 </div>
 
-Note:
-The screenshots are the apps' own store screenshots, cropped to the phone screen: Ente Auth from github.com/ente/ente (AGPL-3.0), Aegis from github.com/beemdevelopment/Aegis (GPL-3.0); the accounts in them are the projects' sample data. Setup: turn on 2FA in an app's settings, choose "authenticator app", scan the QR code.
-
 ---
 
 ## *Sign in* with a physical key.
@@ -1069,9 +932,6 @@ It checks the site's real address. Most Philippine banks and e-wallets don't tak
 </div>
 </div>
 </div>
-
-Note:
-The photo is a YubiKey 5C NFC on a keyring, from Wikimedia Commons (CC BY 4.0, Daniel Aleksandersen, 2026). The only Level 2 item that costs money. The key checks the website's real address before it answers, so a perfect copy of the page gets nothing. Use it on your email and big accounts. Passkeys work the same way and cost nothing. It stops fake pages, not every attack: a scammer who talks you into approving something still can. Keep two keys, one as a spare, and the recovery codes somewhere safe. Check prices from local sellers the week of the event, and which big services and local banks support keys and passkeys.
 
 ---
 
@@ -1106,9 +966,6 @@ An alias forwards to your real inbox. If one leaks, you switch it off, and you k
 
 </div>
 
-Note:
-Proton's import tool brings Gmail across. Start by using the new address for new sign-ups. SimpleLogin belongs to Proton. Throwaway inboxes (temporary-mail sites) are often readable by anyone who types the same address and disappear after a while: fine for a one-time download or coupon, never for an account you'll need to recover or anything with your name, money or school on it.
-
 ---
 
 ## *VPN and DNS*: safer on any Wi-Fi.
@@ -1140,9 +997,6 @@ Proton VPN has a free plan; Mullvad is paid and needs no email to sign up. On "F
 
 </div>
 
-Note:
-Ties back to the fake Wi-Fi in Part 1's toolbox. Many free VPN apps make their money from your data, so pick one whose owner and policy you can check. Proton VPN's free plan has no data cap but fewer servers; Mullvad costs about €5 a month and takes cash or an account number, no email. A VPN moves your trust from the Wi-Fi to the VPN company; it doesn't make you anonymous. Quad9 is a free, nonprofit DNS service that refuses to look up known scam and malware sites. On Android 9 and later: Settings → Network & internet → Private DNS → "Private DNS provider hostname" → dns.quad9.net (the menu name varies by phone). On iPhone, Quad9's site offers a profile to install. Check the prices and menu paths the week of the event.
-
 ---
 
 ## Switch without breaking your *life*.
@@ -1161,9 +1015,6 @@ Your e-wallet, your school chats and some of your family will stay where they ar
 
 </div>
 
-Note:
-Nobody has to delete anything today. Add first.
-
 ---
 
 ## Want to go *further*?
@@ -1176,18 +1027,12 @@ Nobody has to delete anything today. Add first.
 
 <p class="steps-note">Next: Level 3, your own cloud, higher risk, and spotting surveillance.</p>
 
-Note:
-Three places to keep going after today. Then the bonus part, Going further; its section slide has the skip-ahead note.
-
 ---
 
 <!-- .slide: class="section-slide" -->
 <span class="section-label">Bonus part</span>
 
 # Going *further*.
-
-Note:
-For those who want more, or who face more than scammers. Bonus part: Level 3, your own cloud, threats from people you know and from powerful groups, and the tools that detect fake towers and trackers. Short on time? Press G, type 67 (the "What's next" section), and Enter to skip it.
 
 ---
 
@@ -1210,9 +1055,6 @@ For when you're ready. Anyone promising returns in crypto is showing you Easy mo
 
 </div>
 
-Note:
-Show, don't push. One minute here. Point back to the intro: "Linux and GrapheneOS are what I use every day." Learn more: Privacy Guides (privacyguides.org) for tools, EFF's Surveillance Self-Defense (ssd.eff.org) for step-by-step guides, and awesome-selfhosted.net for apps you can run yourself.
-
 ---
 
 ## Your own cloud, at *home*.
@@ -1232,9 +1074,6 @@ A homelab can start with an old laptop or a Raspberry Pi and one external drive.
 
 </div>
 
-Note:
-This is Level 3 for people who like to tinker, and a good club or school project. Start small: one old computer, one app (Immich for the family's photos is the easiest win), and a backup. awesome-selfhosted.net lists hundreds more. Self-hosting also means you're responsible for updates and backups: say so.
-
 ---
 
 ## Match your defences to your *threat*.
@@ -1251,9 +1090,6 @@ This is Level 3 for people who like to tinker, and a good club or school project
 Five questions decide how far to go: What do I want to protect? From whom? How likely is it? How bad if I fail? How much trouble will I take to prevent it?
 
 </div>
-
-Note:
-Threat modelling, from Privacy Guides. Most of the hall needs the first column. Say it calmly: this isn't to scare anyone, it's so the people who need more know where to start.
 
 ---
 
@@ -1283,9 +1119,6 @@ For journalists, activists, community leaders and lawyers: people a powerful gro
 
 </div>
 
-Note:
-Short, and only for those who need it. GrapheneOS runs only on Google Pixel phones. Its duress PIN or password: entering it instead of the real one wipes the phone. Wiping a phone during a lawful search can itself be an offence, so flag this line for legal review and don't present it as a way around the police. Check the exact menu name on a current GrapheneOS release before the event. All three pictures are drawings.
-
 ---
 
 ## Your computer: leave nothing *behind*.
@@ -1314,9 +1147,6 @@ Tails: plug in the USB stick, start the computer from it, and everything goes th
 
 </div>
 
-Note:
-Tails stands for The Amnesic Incognito Live System: amnesic because it forgets everything when you shut down, incognito because everything goes through Tor, live because it runs from the USB stick without installing. It's free and open source (tails.net). It's for when the computer itself can't be trusted, or when leaving no trace matters. Full-disk encryption is the one most people can turn on today. Windows' Device Encryption saves its recovery key to your Microsoft account, so whoever gets into that account can unlock the drive. Tor hides where you are, not who you are: log in to an account, and the site knows it's you. Check which Windows editions have BitLocker versus Device Encryption before the event.
-
 ---
 
 ## Keep things separate, and don't go it *alone*.
@@ -1342,9 +1172,6 @@ If one part of your life leaks, the rest stays apart. And you don't have to work
 
 </div>
 
-Note:
-Check the helpline's details the week of the event. Point people to us at the booth too.
-
 ---
 
 ## Rayhunter spots fake cell *towers*.
@@ -1363,9 +1190,6 @@ Check the helpline's details the week of the event. Point people to us at the bo
 </div>
 </div>
 
-Note:
-github.com/EFForg/rayhunter. It runs on an Orbic mobile hotspot and raises a warning when a cell-site simulator is nearby: the same kind of fake tower as the SMS blasters in Part 1. Check what hardware is available here before recommending a purchase.
-
 ---
 
 ## OUI-SPY listens for *trackers*.
@@ -1383,9 +1207,6 @@ github.com/EFForg/rayhunter. It runs on an Orbic mobile hotspot and raises a war
 <p class="slide-source">OUI-SPY board · colonelpanichacks, MIT</p>
 </div>
 </div>
-
-Note:
-github.com/colonelpanichacks/oui-spy. An ESP32 board whose firmware watches for devices by their maker's Bluetooth and Wi-Fi addresses. Its current firmware is detection-only. It can miss devices that keep changing their address, which phones and AirTags do; for a tracker following you, your phone's own unknown-tracker alerts are the first check. Check availability and legality here before recommending it.
 
 ---
 
@@ -1407,9 +1228,6 @@ github.com/colonelpanichacks/oui-spy. An ESP32 board whose firmware watches for 
 
 <p class="steps-note">One fix for someone at home. No one stays safe alone.</p>
 
-Note:
-Agree the code word, turn on their 2FA, or ask together: "Why do they need that?" Lola will ask again, and that's fine. The take-home card at the booth has a list to tick.
-
 ---
 
 ## Build a *community*.
@@ -1423,9 +1241,6 @@ Agree the code word, turn on their 2FA, or ask together: "Why do they need that?
 
 <p class="steps-note">Start with your barkada, your family's group chat, your school org.</p>
 
-Note:
-Adapted from "Be an advocate" in my open-source and local-first talk. This is the leadership part of the summit: you don't have to be an expert to be the person others ask. Point to our page (facebook.com/bnhr.xyz, the QR on my intro slide) and to the booth for anyone who wants to keep going.
-
 ---
 
 ## Communities grow from small *meetups*.
@@ -1436,9 +1251,6 @@ Adapted from "Be an advocate" in my open-source and local-first talk. This is th
 </div>
 
 <p class="steps-note">We started with only a few people around a table.</p>
-
-Note:
-From my open-source and local-first talk. The open mapping community began as a handful of people at meetups like #maptimeDILIMAN and grew into Pista ng Mapa and the international State of the Map conference, held in Manila in 2025. A safety-minded barkada or school org can start the same way.
 
 ---
 
@@ -1459,9 +1271,6 @@ Every scam card shows its warning signs; you block it with a card showing the sa
 
 </div>
 
-Note:
-This is the game behind everything the hall has done today: Ma'am Liza's PIN, the nine signs, and "shout the sign" are all from BUDOL. Show the scam card, then reveal the card that blocks it (same signs: Pay first, Easy money), then a habit card turning from red to green.
-
 ---
 
 ## Come to our *booth*.
@@ -1475,15 +1284,9 @@ This is the game behind everything the hall has done today: Ma'am Liza's PIN, th
 </div>
 </div>
 
-Note:
-Say where the booth is in the hall.
-
 ---
 
 <!-- .slide: class="section-slide" -->
 <span class="section-label">Spot it. Stop it. Switch it.</span>
 
 # Humayo kayo<br>at magpaka-<br>*open-source*.
-
-Note:
-Maraming salamat. Pause, check, switch one. Questions: at our booth, all day.

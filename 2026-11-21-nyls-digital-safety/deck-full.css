@@ -1,5 +1,5 @@
 /* The full version only (make.py links this after deck.css). Every block keeps the stage version's size; only the
-   extra text the stage version moves to the speaker notes is added, set smaller: under a block (.more) or inside a
+   extra text the stage version leaves out is added, set smaller: under a block (.more) or inside a
    card (.more-in). The text under a block stops short of the logo's column, so it can run down to the footer line. */
 .reveal .slides section .more { margin-top: 12px; max-width: 1540px; }
 .reveal .slides section .more p,
